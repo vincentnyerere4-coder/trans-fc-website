@@ -2,16 +2,18 @@
 <html lang="sw">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TRANSIT CAMP FC - LIVE</title>
+<title>TRANSIT CAMP FC - KIMARA</title>
 <style>
 body{margin:0;font-family:Arial;background:#081c12;color:white;text-align:center}
-.header{background:#ffde59;color:#081c12;padding:15px;font-weight:900;font-size:22px}
+.header{background:#ffde59;color:#081c12;padding:15px;font-weight:900;font-size:22px;position:sticky;top:0;z-index:10}
 .score-box{background:white;color:black;margin:15px;border-radius:16px;padding:20px}
 .score{font-size:56px;font-weight:900}
-.live{color:red;animation:blink 1s infinite}
-@keyframes blink{50%{opacity:0}}
+.live{color:red;animation:blink 1s infinite} @keyframes blink{50%{opacity:0}}
 .card{background:white;color:black;margin:10px;border-radius:12px;padding:15px;text-align:left}
-.hist{background:#081c12;border:1px solid #ffde59;color:white}
+.tabs{display:flex;gap:5px;overflow-x:auto;padding:10px} .tab{padding:10px 15px;background:#1a3a26;color:white;border-radius:20px;white-space:nowrap;cursor:pointer} .tab.active{background:#ffde59;color:black;font-weight:900}
+.section{display:none} .section.active{display:block}
+table{width:100%;border-collapse:collapse;font-size:13px} th{background:#081c12;color:#ffde59;padding:8px} td{padding:7px;border-bottom:1px solid #ddd}
+.player{display:flex;align-items:center;gap:10px;padding:8px;border-bottom:1px solid #eee} .player img{width:45px;height:45px;border-radius:50%;background:#ddd}
 .social{padding:20px} .social a{padding:12px 18px;border-radius:25px;color:white;text-decoration:none;margin:5px;display:inline-block;font-weight:bold}
 </style>
 </head>
@@ -21,27 +23,52 @@ body{margin:0;font-family:Arial;background:#081c12;color:white;text-align:center
 <div id="liveStatus"></div>
 <div id="matchTitle">TRANSIT CAMP FC vs KMC FC</div>
 <div class="score"><span id="sh">0</span> - <span id="sa">0</span></div>
-<div>Dakika <span id="min">0</span>'</div>
-<div>Uwanja: KMC Complex</div>
+<div>Dakika <span id="min">0</span>' - <span id="stad">KMC Complex</span></div>
+<div style="display:flex;gap:10px;margin-top:12px;">
+<div style="flex:1;background:#e8ffe8;padding:10px;border-radius:8px;"><b style="color:green;">🟢 TRANSIT CAMP</b><div id="goalsTrans">Hakuna goli</div></div>
+<div style="flex:1;background:#ffe8e8;padding:10px;border-radius:8px;"><b style="color:red;">🔴 KMC FC</b><div id="goalsKmc">Hakuna goli</div></div>
 </div>
-<div class="card">
-<h3>⚽ MAGOLI LIVE</h3>
-<div style="display:flex;gap:10px;">
-<div style="flex:1;background:#e8ffe8;padding:10px;border-radius:8px;">
-<b style="color:green;">🟢 TRANSIT CAMP</b>
-<div id="goalsTrans" style="margin-top:8px;">Hakuna goli</div>
+<div id="liveMotm" style="margin-top:10px;background:#fff8c4;padding:10px;border-radius:8px;font-weight:bold;text-align:center;">MOTM: Bado</div>
 </div>
-<div style="flex:1;background:#ffe8e8;padding:10px;border-radius:8px;">
-<b style="color:red;">🔴 KMC FC</b>
-<div id="goalsKmc" style="margin-top:8px;">Hakuna goli</div>
+<div class="tabs">
+<div class="tab active" onclick="show('msimamo')">📊 Msimamo</div>
+<div class="tab" onclick="show('wachezaji')">👕 Wachezaji</div>
+<div class="tab" onclick="show('bench')">👔 Benchi la Ufundi</div>
+<div class="tab" onclick="show('history')">📚 Historia</div>
 </div>
+<div id="msimamo" class="section active card">
+<h3>🏆 MSIMAMO CHAMPIONSHIP 2025/26</h3>
+<table id="tableStandings">
+<tr><th>#</th><th>Timu</th><th>P</th><th>W</th><th>Pts</th></tr>
+<tr><td>1</td><td>TRANSIT CAMP FC</td><td>5</td><td>+4</td><td>12</td></tr>
+<tr><td>2</td><td>KMC FC</td><td>5</td><td>+3</td><td>10</td></tr>
+<tr><td>3</td><td>Mbeya City</td><td>5</td><td>+2</td><td>9</td></tr>
+<tr><td>4</td><td>Coastal Union</td><td>5</td><td>+1</td><td>8</td></tr>
+<tr><td>5</td><td>Pamba Jiji</td><td>5</td><td>0</td><td>7</td></tr>
+<tr><td>6</td><td>Kitayosce</td><td>5</td><td>-1</td><td>6</td></tr>
+<tr><td>7</td><td>Stand United</td><td>5</td><td>-2</td><td>5</td></tr>
+<tr><td>8</td><td>Biashara United</td><td>5</td><td>-3</td><td>4</td></tr>
+<tr><td colspan="5" style="text-align:center;color:gray;">... hadi 16 - Unaweza kuhariri kwenye admin</td></tr>
+</table>
 </div>
-<h3 style="margin-top:15px;">🌟 MCHEZAJI BORA WA MECHI</h3>
-<div id="liveMotm" style="background:#fff8c4;padding:10px;border-radius:8px;font-weight:bold;">Bado hajachaguliwa</div>
+<div id="wachezaji" class="section card">
+<h3>👕 KIKOSI CHA WACHEZAJI</h3>
+<div class="player"><img><div><b>Juma K. - #9</b><br><small>Mshambuliaji | Magoli 4</small></div></div>
+<div class="player"><img><div><b>Kante - #8</b><br><small>Kiungo | MOTM 2</small></div></div>
+<div class="player"><img><div><b>Musa - #1</b><br><small>Golikipa | Clean Sheet 2</small></div></div>
+<div class="player"><img><div><b>Baraka - #5</b><br><small>Beki | Mechi 5</small></div></div>
+<div style="color:gray;text-align:center;margin-top:10px;">Ongeza wachezaji wote 25 kwenye admin</div>
 </div>
-<div class="card hist">
-<h3 style="color:#ffde59;">📚 HISTORIA + RATIBA INAYOFUATA</h3>
-<div id="historyList">Inapakia historia...</div>
+<div id="bench" class="section card">
+<h3>👔 BENCHI LA UFUNDI</h3>
+<div class="player"><img><div><b>Kocha Mkuu: Coach Vincent</b><br><small>Leseni CAF B | Mechi 5</small></div></div>
+<div class="player"><img><div><b>Kocha Msaidizi: Coach Ally</b><br><small>Tactics & Fitness</small></div></div>
+<div class="player"><img><div><b>Golikipa Kocha: Coach Juma</b><br><small>Goalkeeping</small></div></div>
+<div class="player"><img><div><b>Meneja: Nyerere</b><br><small>Team Manager</small></div></div>
+</div>
+<div id="history" class="section card" style="background:#081c12;color:white;border:1px solid #ffde59;">
+<h3 style="color:#ffde59;">📚 HISTORIA + RATIBA</h3>
+<div id="historyList">Inapakia...</div>
 </div>
 <div class="social">
 <a href="https://facebook.com/" style="background:#1877F2">📘 Facebook</a>
@@ -49,27 +76,21 @@ body{margin:0;font-family:Arial;background:#081c12;color:white;text-align:center
 <a href="https://wa.me/255700000000" style="background:#25D366">💬 WhatsApp</a>
 </div>
 <script>
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active');}
 function load(){
- let d=JSON.parse(localStorage.getItem('trans_live')||'{"team1":"TRANSIT CAMP FC","team2":"KMC FC","sh":0,"sa":0,"min":0,"match":"TRANSIT CAMP FC vs KMC FC","live":false,"goals":[],"motm":""}');
- document.getElementById('matchTitle').innerText=d.match;
- document.getElementById('sh').innerText=d.sh;
- document.getElementById('sa').innerText=d.sa;
- document.getElementById('min').innerText=d.min;
+ let d=JSON.parse(localStorage.getItem('trans_live')||'{"sh":0,"sa":0,"min":0,"match":"TRANSIT CAMP FC vs KMC FC","live":false,"goals":[],"motm":""}');
+ document.getElementById('sh').innerText=d.sh||0; document.getElementById('sa').innerText=d.sa||0; document.getElementById('min').innerText=d.min||0; document.getElementById('matchTitle').innerText=d.match||'TRANSIT CAMP FC vs KMC FC';
  document.getElementById('liveStatus').innerHTML=d.live?'<span class=live>🔴 LIVE KMC COMPLEX</span>':'⚪ Bado Haijaanza';
  if(d.goals&&d.goals.length>0){
-  let trans = d.goals.filter(g=>g.team.includes('TRANS'));
-  let kmc = d.goals.filter(g=>!g.team.includes('TRANS'));
-  document.getElementById('goalsTrans').innerHTML = trans.length>0 ? trans.map(g=>`⚽ <b>${g.player}</b> - Dk ${g.min}'`).join('<br>') : 'Hakuna goli';
-  document.getElementById('goalsKmc').innerHTML = kmc.length>0 ? kmc.map(g=>`⚽ <b>${g.player}</b> - Dk ${g.min}'`).join('<br>') : 'Hakuna goli';
+  let tr=d.goals.filter(g=>g.team.includes('TRANS')); let km=d.goals.filter(g=>!g.team.includes('TRANS'));
+  document.getElementById('goalsTrans').innerHTML=tr.length?tr.map(g=>`⚽ ${g.player} ${g.min}'`).join('<br>'):'Hakuna goli';
+  document.getElementById('goalsKmc').innerHTML=km.length?km.map(g=>`⚽ ${g.player} ${g.min}'`).join('<br>'):'Hakuna goli';
  }
- if(d.motm){document.getElementById('liveMotm').innerText=d.motm;}
- let hist=JSON.parse(localStorage.getItem('trans_history')||'[]');
- let next=JSON.parse(localStorage.getItem('trans_next')||'{}');
- let html='';
- if(hist.length>0){html+=hist.slice().reverse().map(h=>`<div style="border-bottom:1px solid #333;padding:8px 0;"><b>${h.match}</b> ${h.score}<br><small>${(h.goals||[]).map(g=>g.player+' '+g.min+"'").join(', ')} | MOTM: ${h.motm}</small></div>`).join('');}
- else{html+='Mechi ya kwanza: Kesho vs KMC Complex<br>';}
- if(next.opp){html+=`<div style="margin-top:12px;background:#ffde59;color:black;padding:10px;border-radius:8px;"><b>INAYOFUATA:</b> vs ${next.opp} - ${next.date} - ${next.venue}</div>`;}
- document.getElementById('historyList').innerHTML=html;
+ if(d.motm)document.getElementById('liveMotm').innerText='🌟 MOTM: '+d.motm;
+ let hist=JSON.parse(localStorage.getItem('trans_history')||'[]'); let next=JSON.parse(localStorage.getItem('trans_next')||'{}');
+ let h=''; if(hist.length)h+=hist.slice().reverse().map(x=>`<div style="border-bottom:1px solid #333;padding:6px 0;"><b>${x.match}</b> ${x.score}<br><small>${(x.goals||[]).map(g=>g.player).join(', ')} | MOTM: ${x.motm}</small></div>`).join(''); else h+='Mechi ya kwanza: Leo vs KMC<br>';
+ if(next.opp)h+=`<div style="margin-top:10px;background:#ffde59;color:black;padding:8px;border-radius:8px;"><b>NEXT:</b> vs ${next.opp} - ${next.date}</div>`;
+ document.getElementById('historyList').innerHTML=h;
 }
 setInterval(load,3000);load();
 </script>
