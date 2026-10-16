@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="sw">
 <head>
@@ -7,7 +6,7 @@
 <title>TRANSIT CAMP FC</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:sans-serif;background:#081c12;color:white;padding:10px}
+body{font-family:'Segoe UI',sans-serif;background:#081c12;color:white;padding:10px}
 .header{background:#fff;color:#0a4d25;padding:18px;border-radius:18px;text-align:center}
 .badge{background:#0a4d25;color:#ffde59;padding:6px 16px;border-radius:20px;font-weight:800;font-size:11px}
 .stats{display:flex;gap:8px;margin-top:10px}
@@ -16,12 +15,20 @@ body{font-family:sans-serif;background:#081c12;color:white;padding:10px}
 .live-dot{width:10px;height:10px;background:gray;border-radius:50%;display:inline-block}
 .live-dot.on{background:red;animation:pulse 1s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 red}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
-.table{background:white;color:#111;border-radius:14px;margin-top:12px;overflow:hidden}
+.card{background:white;color:#111;border-radius:14px;margin-top:12px;overflow:hidden;padding:12px}
+.card h3{background:#0a4d25;color:white;padding:10px;border-radius:8px;text-align:center;font-size:13px;margin-bottom:8px}
 table{width:100%;border-collapse:collapse;font-size:11px}
 th{background:#eee;padding:6px}td{padding:6px;text-align:center;border-bottom:1px solid #eee}
 tr.trans{background:#d6ffd6;font-weight:800}
 .next{background:#0a4d25;color:#ffde59;padding:12px;border-radius:10px;margin-top:10px;font-weight:900;text-align:center}
 .next.live{background:#ffde59;color:#0a4d25}
+.player-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.player{background:#f0f7f0;padding:8px;border-radius:8px;border-left:4px solid #0a4d25}
+.player b{font-size:12px} .player small{display:block;font-size:10px;color:#555}
+.staff{display:flex;gap:8px;flex-wrap:wrap}
+.staff-card{flex:1;min-width:110px;background:#0a4d25;color:white;padding:10px;border-radius:10px;text-align:center}
+.staff-card b{display:block;font-size:12px;color:#ffde59}
+.staff-card small{font-size:10px}
 </style>
 </head>
 <body>
@@ -36,38 +43,68 @@ tr.trans{background:#d6ffd6;font-weight:800}
 </div>
 <div style="margin-top:10px">
 <span id="dot" class="live-dot"></span> <span id="txt">TUNAELEKEA PREMIER!</span>
-<div id="score" class="next">MECHI IJAYO: TRANS vs KMC - KESHO 15:00</div>
+<div id="score" class="next">MECHI IJAYO: TRANS vs KMC - KESHO 15:00 MABATINI</div>
 </div>
 </div>
-<div class="table">
+<div class="card">
+<h3>🏆 MSIMAMO TIMU 16</h3>
 <table>
-<tr><th>#</th><th>TIMU</th><th>P</th><th>GD</th><th>PTS</th></tr>
-<tr class="trans"><td>1</td><td>TRANSIT CAMP</td><td>5</td><td>+6</td><td>13</td></tr>
-<tr><td>2</td><td>KMC FC</td><td>5</td><td>+9</td><td>11</td></tr>
-<tr><td>3</td><td>Stand Utd</td><td>4</td><td>+3</td><td>10</td></tr>
-<tr><td>4</td><td>Rhino</td><td>5</td><td>+3</td><td>10</td></tr>
-<tr><td>5</td><td>Tz Prisons</td><td>5</td><td>+3</td><td>10</td></tr>
-<tr><td>6</td><td>Kigamboni</td><td>5</td><td>+3</td><td>10</td></tr>
-<tr><td>7</td><td>Port TZ</td><td>5</td><td>+2</td><td>8</td></tr>
-<tr><td>8</td><td>Mtibwa</td><td>5</td><td>+1</td><td>8</td></tr>
-<tr><td>9</td><td>IAA SC</td><td>5</td><td>-3</td><td>5</td></tr>
-<tr><td>10</td><td>Mbeya First</td><td>5</td><td>-2</td><td>4</td></tr>
-<tr><td>11</td><td>Mbuni FC</td><td>5</td><td>-5</td><td>4</td></tr>
-<tr><td>12</td><td>Kengold</td><td>5</td><td>-4</td><td>4</td></tr>
-<tr><td>13</td><td>Gunners</td><td>5</td><td>-3</td><td>3</td></tr>
-<tr><td>14</td><td>Songea Utd</td><td>5</td><td>-3</td><td>3</td></tr>
-<tr><td>15</td><td>TMA FC</td><td>4</td><td>-4</td><td>1</td></tr>
-<tr><td>16</td><td>Bigman FC</td><td>5</td><td>-6</td><td>1</td></tr>
+<tr><th>#</th><th>TIMU</th><th>P</th><th>PTS</th></tr>
+<tr class="trans"><td>1</td><td>TRANSIT CAMP</td><td>5</td><td>13</td></tr>
+<tr><td>2</td><td>KMC FC</td><td>5</td><td>11</td></tr>
+<tr><td>3</td><td>Stand Utd</td><td>4</td><td>10</td></tr>
+<tr><td>4</td><td>Rhino</td><td>5</td><td>10</td></tr>
+<tr><td>5</td><td>Tz Prisons</td><td>5</td><td>10</td></tr>
+<tr><td>6</td><td>Kigamboni</td><td>5</td><td>10</td></tr>
+<tr><td>7</td><td>Port TZ</td><td>5</td><td>8</td></tr>
+<tr><td>8</td><td>Mtibwa</td><td>5</td><td>8</td></tr>
+<tr><td>9</td><td>IAA SC</td><td>5</td><td>5</td></tr>
+<tr><td>10</td><td>Mbeya First</td><td>5</td><td>4</td></tr>
+<tr><td>11</td><td>Mbuni FC</td><td>5</td><td>4</td></tr>
+<tr><td>12</td><td>Kengold</td><td>5</td><td>4</td></tr>
+<tr><td>13</td><td>Gunners</td><td>5</td><td>3</td></tr>
+<tr><td>14</td><td>Songea Utd</td><td>5</td><td>3</td></tr>
+<tr><td>15</td><td>TMA FC</td><td>4</td><td>1</td></tr>
+<tr><td>16</td><td>Bigman FC</td><td>5</td><td>1</td></tr>
 </table>
 </div>
+<div class="card">
+<h3>⚽ KIKOSI CHA WACHEZAJI 2026/27</h3>
+<div class="player-grid">
+<div class="player"><b>1. Juma Hassan</b><small>Golikipa</small></div>
+<div class="player"><b>2. Baraka Omari</b><small>Beki Kulia</small></div>
+<div class="player"><b>3. Saidi Mshindi</b><small>Beki Kushoto</small></div>
+<div class="player"><b>4. Musa Kondo</b><small>Beki wa Kati - Nahodha</small></div>
+<div class="player"><b>5. Ibrahim Rajab</b><small>Beki wa Kati</small></div>
+<div class="player"><b>6. Kelvin John</b><small>Kiungo Mkabaji</small></div>
+<div class="player"><b>8. Ally Said</b><small>Kiungo Mshambuliaji</small></div>
+<div class="player"><b>7. Shaban Idd</b><small>Winga Kulia</small></div>
+<div class="player"><b>11. Frank Domayo</b><small>Winga Kushoto</small></div>
+<div class="player"><b>9. Hamis Kigua</b><small>Mshambuliaji - 6 Goals</small></div>
+<div class="player"><b>10. Rashid Juma</b><small>Kiungo / Mshambuliaji</small></div>
+<div class="player"><b>12. Joseph Mbilinyi</b><small>Akiba - Kiungo</small></div>
+</div>
+</div>
+<div class="card">
+<h3>🎖️ BENCHI LA UFUNDI</h3>
+<div class="staff">
+<div class="staff-card"><b>Coach Mkuu</b><small>Coach Juma<br>Licence C</small></div>
+<div class="staff-card"><b>Kocha Msaidizi</b><small>Coach Seif<br>Tactics</small></div>
+<div class="staff-card"><b>Kocha Magolikipa</b><small>Coach Ally<br>GK Trainer</small></div>
+<div class="staff-card"><b>Team Doctor</b><small>Dr. Hamisi<br>Physio & Care</small></div>
+<div class="staff-card" style="background:#ffde59;color:#111;border:2px solid #0a4d25"><b>IT Analyst</b><small>Vincent Maile<br>Data & LIVE System</small></div>
+<div class="staff-card"><b>Team Manager</b><small>Meneja Mkuu<br>Logistics</small></div>
+</div>
+</div>
+<div style="text-align:center;margin:18px 0;font-size:10px;opacity:.6">Powered by Vincent Maile - IT | TRANS FC 2026/27</div>
 <script>
 function check(){
 let d=JSON.parse(localStorage.getItem('trans_live')||'{"sh":0,"sa":0,"min":0,"match":"TRANS vs KMC","live":false}');
 let dot=document.getElementById('dot');
 let txt=document.getElementById('txt');
 let sc=document.getElementById('score');
-if(d.live){dot.classList.add('on');txt.innerText='LIVE!';sc.classList.add('live');sc.innerText=d.match+' | '+d.sh+'-'+d.sa+" | "+d.min+"'";}
-else{dot.classList.remove('on');txt.innerText='TUNAELEKEA PREMIER!';sc.classList.remove('live');sc.innerText='MECHI IJAYO: '+d.match+' - KESHO 15:00';}
+if(d.live){dot.classList.add('on');txt.innerText='MECHI LIVE!';sc.classList.add('live');sc.innerText=d.match+' | '+d.sh+'-'+d.sa+" | "+d.min+"'";}
+else{dot.classList.remove('on');txt.innerText='TUNAELEKEA PREMIER!';sc.classList.remove('live');sc.innerText='MECHI IJAYO: '+d.match+' - KESHO 15:00 MABATINI';}
 }
 setInterval(check,1000);check();
 </script>
