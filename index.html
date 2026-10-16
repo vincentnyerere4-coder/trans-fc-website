@@ -18,6 +18,7 @@ tr.first{background:#d8f0d8;font-weight:900} tr.last{background:#ffd6d6}
 .btn-white{background:white;color:#0a4a25}
 .squad-box{padding:12px;text-align:left;font-size:13px;line-height:1.8} .pos{font-weight:900;color:#0a4a25;margin-top:10px;display:block;background:#ffde59;padding:4px 8px;border-radius:6px}
 .goals-list{font-size:12px;text-align:left;margin-top:8px;background:#f5f5f5;padding:8px;border-radius:8px;color:black}
+.footer{background:#ffde59;color:#0a2210;border-radius:12px;padding:18px;text-align:center;margin-top:14px;font-weight:900} .footer p{margin:4px 0} .motto{font-size:16px;font-style:italic;color:#0a4a25} .prepared{font-size:13px;margin-top:8px;border-top:1px solid #0a2210;padding-top:8px}
 </style>
 </head>
 <body>
@@ -56,55 +57,25 @@ tr.first{background:#d8f0d8;font-weight:900} tr.last{background:#ffd6d6}
 </table>
 </div>
 <button class="btn" onclick="toggle('squad')">FULL SQUAD 2025/26 ▼</button>
-<div id="squad" class="table-card"><div class="squad-box">
-<span class="pos">🧤 GOALKEEPERS - Makipa</span>
-1. Musa Ramadhan - #1 - 26yrs<br>
-2. Juma Ally - #16 - 23yrs<br>
-3. Seif Omar - #22 - 21yrs<br>
-<span class="pos">🛡️ DEFENDERS - Mabeki</span>
-4. Baraka Hamis - #5 - Captain - 28yrs<br>
-5. Issa Kondo - #3 - 24yrs<br>
-6. Kondo Rajab - #2 - 25yrs<br>
-7. Seif Abdallah - #4 - 22yrs<br>
-8. Mussa Said - #12 - 23yrs<br>
-9. Jafari Mwinyi - #15 - 27yrs<br>
-10. Hassan K. - #20 - 21yrs<br>
-<span class="pos">⚙️ MIDFIELDERS - Viungo</span>
-11. Kante Ally - #8 - 26yrs - MOTM 2<br>
-12. Ally Samir - #6 - 24yrs<br>
-13. Samir Yahya - #10 - Playmaker - 25yrs<br>
-14. Pato Ngassa - #17 - 22yrs<br>
-15. Ramadhan Said - #7 - 23yrs<br>
-16. Haruna M. - #14 - 24yrs<br>
-17. Ibrahimu M. - #18 - 21yrs<br>
-<span class="pos">⚽ FORWARDS - Washambuliaji</span>
-18. Juma K. - #9 - 27yrs - Top Scorer 4 Goals<br>
-19. Pato Juma - #11 - 24yrs - 2 Goals<br>
-20. Ramadhan Kondo - #19 - 22yrs<br>
-21. Said K. - #21 - 20yrs<br>
-22. Omary B. - #23 - 23yrs<br>
-23. Shaban I. - #25 - 19yrs<br>
-24. Nyerere J. - #13 - 26yrs<br>
+<div id="squad" style="display:none" class="table-card"><div class="squad-box">
+<span class="pos">🧤 GOALKEEPERS</span>1. Musa Ramadhan - #1<br>2. Juma Ally - #16<br>3. Seif Omar - #22<br>
+<span class="pos">🛡️ DEFENDERS</span>4. Baraka Hamis - #5 - Captain<br>5. Issa Kondo - #3<br>6. Kondo Rajab - #2<br>7. Seif Abdallah - #4<br>
+<span class="pos">⚙️ MIDFIELDERS</span>11. Kante Ally - #8<br>12. Ally Samir - #6<br>13. Samir Yahya - #10<br>
+<span class="pos">⚽ FORWARDS</span>18. Juma K. - #9 - 4 Goals<br>19. Pato Juma - #11<br>
 </div></div>
 <button class="btn btn-white" onclick="toggle('bench')">TECHNICAL & LEADERSHIP BENCH ▼</button>
 <div id="bench" class="table-card"><div class="squad-box">
 <span class="pos">👔 BENCHI LA UFUNDI</span>
-<b>Kocha Mkuu:</b> Coach Vincent Nyerere - Leseni CAF B - 5 Mechi<br>
-<b>Kocha Msaidizi:</b> Coach Ally Salehe - Tactics & Fitness<br>
-<b>Kocha wa Makipa:</b> Coach Juma Hamisi - Goalkeeping Coach<br>
-<b>Kocha wa Viungo:</b> Coach Seif Abdallah<br>
-<span class="pos">🏥 UONGOZI & HUDUMA</span>
-<b>Team Manager:</b> Nyerere Hamisi<br>
-<b>Assistant Manager:</b> Rajab Kondo<br>
-<b>Daktari:</b> Dr. Said M. - Physio<br>
-<b>Kit Manager:</b> Omary Juma<br>
-<b>Media Officer:</b> Vincent N. - Digital<br>
-<b>Mlinzi wa Uwanja:</b> Mzee Kondo<br>
+<b>Kocha Mkuu:</b> Coach Vincent Nyerere<br><b>Msaidizi:</b> Coach Ally Salehe<br><b>Makipa:</b> Coach Juma Hamisi<br>
+<span class="pos">🏥 UONGOZI</span><b>Manager:</b> Nyerere Hamisi<br><b>Doctor:</b> Dr. Said M.<br>
 </div></div>
-<button class="btn" onclick="alarm()">TURN ON/OFF LIVE ALARM</button>
+<div class="footer">
+<p class="motto">"WE ARE THE PEOPLE'S ARMY - MABATINI TUTAENDA PREMIERE LEAGUE!"</p>
+<p>💛💚 TRANSIT CAMP FC - KIMARA 💚💛</p>
+<div class="prepared">Prepared by Vincent Nyerere © 2025/26<br>All Rights Reserved - Transit Camp FC</div>
+</div>
 <script>
 function toggle(id){let e=document.getElementById(id);e.style.display=e.style.display=='none'?'block':'none';}
-function alarm(){alert('🔔 Live Alarm - Mashabiki watapata notification mechi ikianza!');}
 function load(){
  let d=JSON.parse(localStorage.getItem('trans_live')||'{}');
  if(d.sh!==undefined){document.getElementById('liveScore').innerText=`Trans ${d.sh}-${d.sa} KMC | ${d.min}'`;}
