@@ -1,61 +1,75 @@
+
 <!DOCTYPE html>
 <html lang="sw">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ADMIN - TRANS FC LIVE</title>
+<title>TRANSIT CAMP FC</title>
 <style>
-body{font-family:sans-serif;background:#111;color:white;padding:15px;max-width:400px;margin:auto}
-h2{text-align:center;color:#ffde59}
-.box{background:#222;border-radius:14px;padding:15px;margin-top:12px}
-input,button{width:100%;padding:14px;margin-top:8px;border-radius:10px;border:none;font-size:16px;font-weight:700}
-button{cursor:pointer}
-.btn-goal{background:#0a4d25;color:white}
-.btn-yellow{background:#ffde59;color:#111}
-.btn-red{background:#d00;color:white}
-.pass{border:2px solid #ffde59}
-.score{font-size:48px;text-align:center;margin:10px 0;font-weight:900}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:sans-serif;background:#081c12;color:white;padding:10px}
+.header{background:#fff;color:#0a4d25;padding:18px;border-radius:18px;text-align:center}
+.badge{background:#0a4d25;color:#ffde59;padding:6px 16px;border-radius:20px;font-weight:800;font-size:11px}
+.stats{display:flex;gap:8px;margin-top:10px}
+.stat{flex:1;background:#0a4d25;color:white;padding:8px;border-radius:10px;text-align:center}
+.stat b{font-size:20px;display:block}
+.live-dot{width:10px;height:10px;background:gray;border-radius:50%;display:inline-block}
+.live-dot.on{background:red;animation:pulse 1s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 red}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.table{background:white;color:#111;border-radius:14px;margin-top:12px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{background:#eee;padding:6px}td{padding:6px;text-align:center;border-bottom:1px solid #eee}
+tr.trans{background:#d6ffd6;font-weight:800}
+.next{background:#0a4d25;color:#ffde59;padding:12px;border-radius:10px;margin-top:10px;font-weight:900;text-align:center}
+.next.live{background:#ffde59;color:#0a4d25}
 </style>
 </head>
 <body>
-<h2>TRANS FC ADMIN</h2>
-<div class="box">
-<input id="pwd" type="password" placeholder="Password: trans2026" class="pass">
-<button onclick="login()" class="btn-yellow" id="loginBtn">INGIA</button>
+<div class="header">
+<h1>TRANSIT CAMP FC</h1>
+<p style="font-size:11px">JESHI LA WANANCHI - MABATINI</p>
+<span class="badge">NBC CHAMPIONSHIP | NAFASI 1 - 13 PTS</span>
+<div class="stats">
+<div class="stat"><b>1</b><small>NAFASI</small></div>
+<div class="stat"><b>13</b><small>POINTI</small></div>
+<div class="stat"><b>5</b><small>MECHI</small></div>
 </div>
-<div id="panel" style="display:none">
-<div class="box">
-<small>Mechi:</small>
-<input id="match" value="TRANS vs KMC - Mabatini">
-<div class="score"><span id="sh">0</span> - <span id="sa">0</span></div>
-<small>Dakika:</small>
-<input id="min" type="number" value="0" min="0" max="120">
-<button onclick="changeMin(1)" class="btn-yellow">+1 DAKIKA</button>
+<div style="margin-top:10px">
+<span id="dot" class="live-dot"></span> <span id="txt">TUNAELEKEA PREMIER!</span>
+<div id="score" class="next">MECHI IJAYO: TRANS vs KMC - KESHO 15:00</div>
 </div>
-<div class="box">
-<button onclick="goal('home')" class="btn-goal">⚽ GOLI TRANS +1</button>
-<button onclick="goal('away')" style="background:#444;color:white">⚽ GOLI Mpinzani +1</button>
-<button onclick="resetGoal()" style="background:#333;color:#aaa">Rudisha 0-0</button>
 </div>
-<div class="box">
-<button onclick="updateLive(true)" class="btn-yellow">🔴 WASHA LIVE</button>
-<button onclick="updateLive(false)" class="btn-red">⚫ ZIMA LIVE</button>
-</div>
-<div class="box" style="background:#0a4d25">
-<p id="status" style="font-size:13px"></p>
-</div>
+<div class="table">
+<table>
+<tr><th>#</th><th>TIMU</th><th>P</th><th>GD</th><th>PTS</th></tr>
+<tr class="trans"><td>1</td><td>TRANSIT CAMP</td><td>5</td><td>+6</td><td>13</td></tr>
+<tr><td>2</td><td>KMC FC</td><td>5</td><td>+9</td><td>11</td></tr>
+<tr><td>3</td><td>Stand Utd</td><td>4</td><td>+3</td><td>10</td></tr>
+<tr><td>4</td><td>Rhino</td><td>5</td><td>+3</td><td>10</td></tr>
+<tr><td>5</td><td>Tz Prisons</td><td>5</td><td>+3</td><td>10</td></tr>
+<tr><td>6</td><td>Kigamboni</td><td>5</td><td>+3</td><td>10</td></tr>
+<tr><td>7</td><td>Port TZ</td><td>5</td><td>+2</td><td>8</td></tr>
+<tr><td>8</td><td>Mtibwa</td><td>5</td><td>+1</td><td>8</td></tr>
+<tr><td>9</td><td>IAA SC</td><td>5</td><td>-3</td><td>5</td></tr>
+<tr><td>10</td><td>Mbeya First</td><td>5</td><td>-2</td><td>4</td></tr>
+<tr><td>11</td><td>Mbuni FC</td><td>5</td><td>-5</td><td>4</td></tr>
+<tr><td>12</td><td>Kengold</td><td>5</td><td>-4</td><td>4</td></tr>
+<tr><td>13</td><td>Gunners</td><td>5</td><td>-3</td><td>3</td></tr>
+<tr><td>14</td><td>Songea Utd</td><td>5</td><td>-3</td><td>3</td></tr>
+<tr><td>15</td><td>TMA FC</td><td>4</td><td>-4</td><td>1</td></tr>
+<tr><td>16</td><td>Bigman FC</td><td>5</td><td>-6</td><td>1</td></tr>
+</table>
 </div>
 <script>
-let data=JSON.parse(localStorage.getItem('trans_live')||'{"sh":0,"sa":0,"min":0,"match":"TRANS vs KMC","live":false}');
-function login(){if(document.getElementById('pwd').value!=='trans2026'){alert('Password si sahihi!');return;}document.getElementById('panel').style.display='block';document.getElementById('loginBtn').style.display='none';load();}
-function load(){document.getElementById('sh').innerText=data.sh;document.getElementById('sa').innerText=data.sa;document.getElementById('min').value=data.min;document.getElementById('match').value=data.match;updateStatus();}
-function save(){data.min=parseInt(document.getElementById('min').value)||0;data.match=document.getElementById('match').value;localStorage.setItem('trans_live',JSON.stringify(data));localStorage.setItem('trans_live_update',Date.now());updateStatus();}
-function goal(t){if(t==='home')data.sh++;else data.sa++;save();load();if(navigator.vibrate)navigator.vibrate([400,100,400]);}
-function resetGoal(){data.sh=0;data.sa=0;save();load();}
-function changeMin(n){let m=document.getElementById('min');m.value=parseInt(m.value||0)+n;save();}
-function updateLive(b){data.live=b;save();alert(b?'LIVE IMEWASHWA!':'LIVE IMEZIMWA');}
-function updateStatus(){document.getElementById('status').innerText=`${data.match} | ${data.sh}-${data.sa} | ${data.min}' | Live:${data.live?'NDIO':'HAPANA'}`;}
-setInterval(save,1000);
+function check(){
+let d=JSON.parse(localStorage.getItem('trans_live')||'{"sh":0,"sa":0,"min":0,"match":"TRANS vs KMC","live":false}');
+let dot=document.getElementById('dot');
+let txt=document.getElementById('txt');
+let sc=document.getElementById('score');
+if(d.live){dot.classList.add('on');txt.innerText='LIVE!';sc.classList.add('live');sc.innerText=d.match+' | '+d.sh+'-'+d.sa+" | "+d.min+"'";}
+else{dot.classList.remove('on');txt.innerText='TUNAELEKEA PREMIER!';sc.classList.remove('live');sc.innerText='MECHI IJAYO: '+d.match+' - KESHO 15:00';}
+}
+setInterval(check,1000);check();
 </script>
 </body>
 </html>
