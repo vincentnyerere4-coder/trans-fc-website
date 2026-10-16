@@ -1,3 +1,4 @@
+Hii hapa Boss, *INDEX Kamili* na Matokeo + Ratiba + Auto Next:
 <!DOCTYPE html>
 <html lang="sw">
 <head>
@@ -18,7 +19,8 @@ tr.first{background:#d8f0d8;font-weight:900} tr.last{background:#ffd6d6}
 .btn-white{background:white;color:#0a4a25}
 .squad-box{padding:12px;text-align:left;font-size:13px;line-height:1.8} .pos{font-weight:900;color:#0a4a25;margin-top:10px;display:block;background:#ffde59;padding:4px 8px;border-radius:6px}
 .goals-list{font-size:12px;text-align:left;margin-top:8px;background:#f5f5f5;padding:8px;border-radius:8px;color:black}
-.footer{background:#ffde59;color:#0a2210;border-radius:12px;padding:18px;text-align:center;margin-top:14px;font-weight:900} .footer p{margin:4px 0} .motto{font-size:16px;font-style:italic;color:#0a4a25} .prepared{font-size:13px;margin-top:8px;border-top:1px solid #0a2210;padding-top:8px}
+.fixture-card{padding:12px} .fixture-item{padding:10px 0;border-bottom:1px solid #eee;font-size:13px} .next-match{background:#ffde59;border-radius:8px;padding:10px!important;font-weight:900}
+.footer{background:#ffde59;color:#0a2210;border-radius:12px;padding:18px;text-align:center;margin-top:14px;font-weight:900} .motto{font-size:16px;font-style:italic;color:#0a4a25} .prepared{font-size:13px;margin-top:8px;border-top:1px solid #0a2210;padding-top:8px}
 </style>
 </head>
 <body>
@@ -26,16 +28,13 @@ tr.first{background:#d8f0d8;font-weight:900} tr.last{background:#ffd6d6}
 <h1>TRANSIT CAMP FC</h1>
 <p>PEOPLE'S ARMY - MABATINI</p>
 <div class="badge">NBC CHAMPIONSHIP 26/27 | 1ST PLACE</div>
-<div class="stats">
-<div class="stat"><b>1</b><span>SPACE</span></div>
-<div class="stat"><b id="pts">13</b><span>POINTS</span></div>
-<div class="stat"><b>5</b><span>MATCH</span></div>
-</div>
-<div class="live-text"><span class="dot"></span> WE ARE GOING TO THE PREMIERE!<br><span id="liveScore">Trans 4-0 KMC | 30'</span></div>
+<div class="stats"><div class="stat"><b>1</b><span>SPACE</span></div><div class="stat"><b>13</b><span>POINTS</span></div><div class="stat"><b>5</b><span>MATCH</span></div></div>
+<div class="live-text"><span class="dot"></span> <span id="nextMatchAuto">Loading...</span><br><span id="liveScore"></span></div>
 <div id="goalsBox" class="goals-list" style="display:none"></div>
 </div>
+
 <div class="table-card">
-<div class="table-head">16 TEAMS STANDINGS - NBC CHAMPIONSHIP</div>
+<div class="table-head">16 TEAMS STANDINGS</div>
 <table>
 <tr><th>#</th><th>TEAM</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>PTS</th></tr>
 <tr class="first"><td>1</td><td>TRANSIT CAMP</td><td>5</td><td>4</td><td>1</td><td>0</td><td>+6</td><td>13</td></tr>
@@ -56,33 +55,88 @@ tr.first{background:#d8f0d8;font-weight:900} tr.last{background:#ffd6d6}
 <tr class="last"><td>16</td><td>Bigman FC</td><td>5</td><td>0</td><td>1</td><td>4</td><td>-6</td><td>1</td></tr>
 </table>
 </div>
+
 <button class="btn" onclick="toggle('squad')">FULL SQUAD 2025/26 ▼</button>
 <div id="squad" style="display:none" class="table-card"><div class="squad-box">
-<span class="pos">🧤 GOALKEEPERS</span>1. Musa Ramadhan - #1<br>2. Juma Ally - #16<br>3. Seif Omar - #22<br>
-<span class="pos">🛡️ DEFENDERS</span>4. Baraka Hamis - #5 - Captain<br>5. Issa Kondo - #3<br>6. Kondo Rajab - #2<br>7. Seif Abdallah - #4<br>
-<span class="pos">⚙️ MIDFIELDERS</span>11. Kante Ally - #8<br>12. Ally Samir - #6<br>13. Samir Yahya - #10<br>
-<span class="pos">⚽ FORWARDS</span>18. Juma K. - #9 - 4 Goals<br>19. Pato Juma - #11<br>
+<span class="pos">🧤 GOALKEEPERS</span>1. Musa Ramadhan - #1<br>2. Juma Ally - #16<br>
+<span class="pos">🛡️ DEFENDERS</span>4. Baraka Hamis - #5 Captain<br>5. Issa Kondo - #3<br>
+<span class="pos">⚙️ MIDFIELDERS</span>11. Kante Ally - #8<br>12. Ally Samir - #6<br>
+<span class="pos">⚽ FORWARDS</span>18. Juma K. - #9 - 4 Goals<br>
 </div></div>
+
 <button class="btn btn-white" onclick="toggle('bench')">TECHNICAL & LEADERSHIP BENCH ▼</button>
 <div id="bench" class="table-card"><div class="squad-box">
-<span class="pos">👔 BENCHI LA UFUNDI</span>
-<b>Kocha Mkuu:</b> Coach Vincent Nyerere<br><b>Msaidizi:</b> Coach Ally Salehe<br><b>Makipa:</b> Coach Juma Hamisi<br>
-<span class="pos">🏥 UONGOZI</span><b>Manager:</b> Nyerere Hamisi<br><b>Doctor:</b> Dr. Said M.<br>
+<span class="pos">👔 BENCHI LA UFUNDI</span><b>Kocha Mkuu:</b> Coach Vincent Nyerere<br><b>Msaidizi:</b> Coach Ally Salehe<br>
+<span class="pos">🏥 UONGOZI & ULINZI</span><b>Manager:</b> Nyerere Hamisi<br><b>Doctor:</b> Dr. Said M.<br><b>Mlinzi:</b> Mzee Kondo<br>
 </div></div>
+
+<div class="table-card">
+<div class="table-head">📅 RATIBA YA MECHI 8 ZIJAZO</div>
+<div class="fixture-card" id="fixtureList"></div>
+</div>
+
+<div class="table-card">
+<div class="table-head">✅ MATOKEO YA MECHI ZILIZOCHEZWA</div>
+<div class="fixture-card" id="resultsList">Hakuna matokeo bado...</div>
+</div>
+
 <div class="footer">
 <p class="motto">"WE ARE THE PEOPLE'S ARMY - MABATINI TUTAENDA PREMIERE LEAGUE!"</p>
 <p>💛💚 TRANSIT CAMP FC - KIMARA 💚💛</p>
 <div class="prepared">Prepared by Vincent Nyerere © 2025/26<br>All Rights Reserved - Transit Camp FC</div>
 </div>
+
 <script>
+const fixtures = [
+  {date:"2026-10-17", time:"16:00", match:"Transit Camp FC vs KMC FC", venue:"HOME - Kimara"},
+  {date:"2026-10-23", time:"16:00", match:"Tanzania Prisons vs Transit Camp FC", venue:"AWAY"},
+  {date:"2026-10-30", time:"16:00", match:"Songea United vs Transit Camp FC", venue:"AWAY"},
+  {date:"2026-11-08", time:"16:00", match:"Transit Camp FC vs Mbuni FC", venue:"HOME"},
+  {date:"2026-11-13", time:"16:00", match:"Transit Camp FC vs Mbeya Kwanza", venue:"HOME"},
+  {date:"2026-11-20", time:"16:00", match:"Stand United vs Transit Camp FC", venue:"AWAY"},
+  {date:"2026-11-27", time:"16:00", match:"Rhino Rangers vs Transit Camp FC", venue:"AWAY"},
+  {date:"2026-12-06", time:"16:00", match:"Gunners FC vs Transit Camp FC", venue:"AWAY"}
+];
 function toggle(id){let e=document.getElementById(id);e.style.display=e.style.display=='none'?'block':'none';}
-function load(){
- let d=JSON.parse(localStorage.getItem('trans_live')||'{}');
- if(d.sh!==undefined){document.getElementById('liveScore').innerText=`Trans ${d.sh}-${d.sa} KMC | ${d.min}'`;}
- if(d.goals&&d.goals.length>0){let box=document.getElementById('goalsBox');box.style.display='block';box.innerHTML=d.goals.map(g=>`⚽ ${g.team}: <b>${g.player}</b> ${g.min}'`).join('<br>');}
- if(d.motm){document.getElementById('goalsBox').style.display='block';document.getElementById('goalsBox').innerHTML+='<br>🌟 MOTM: '+d.motm;}
+function renderAll(){
+  let now = new Date();
+  let results = JSON.parse(localStorage.getItem('trans_results')||'[]');
+  let next = null;
+  for(let f of fixtures){
+    let md = new Date(f.date+"T"+f.time+":00");
+    let ed = new Date(md.getTime()+2*60*60*1000);
+    if(now < ed && !results.find(r=>r.date===f.date)){ if(!next) next=f; }
+  }
+  if(!next) next = fixtures[fixtures.length-1];
+  document.getElementById('nextMatchAuto').innerText = `NEXT: ${next.match} | ${next.date} ${next.time}`;
+  let upHTML="";
+  fixtures.forEach(f=>{
+    if(!results.find(r=>r.date===f.date)){
+      let isNext = f.date===next.date;
+      upHTML+=`<div class="fixture-item ${isNext?'next-match':''}">${isNext?'🔥 NEXT: ':''}<b>${f.match}</b><br><small>${f.date} ${f.time} - ${f.venue}</small></div>`;
+    }
+  });
+  document.getElementById('fixtureList').innerHTML = upHTML || "<small>Mechi zote zimechezwa</small>";
+  if(results.length===0){
+    document.getElementById('resultsList').innerHTML="Hakuna matokeo bado...";
+  }else{
+    let rHTML="";
+    results.slice().reverse().forEach(r=>{
+      rHTML+=`<div class="fixture-item" style="background:#e8ffe8;border-radius:8px;margin:5px 0;padding:8px;"><b>${r.match}</b> - <b style="color:#0a4a25;font-size:16px">${r.score}</b><br><small>${r.date} | ⚽ ${r.scorers||''}</small></div>`;
+    });
+    document.getElementById('resultsList').innerHTML=rHTML;
+  }
 }
-setInterval(load,3000);load();
+function loadLive(){
+ let d=JSON.parse(localStorage.getItem('trans_live')||'{}');
+ if(d.sh!==undefined){document.getElementById('liveScore').innerText=`LIVE: Trans ${d.sh}-${d.sa} | ${d.min}'`;}
+ let box=document.getElementById('goalsBox');
+ if(d.goals&&d.goals.length>0){box.style.display='block';box.innerHTML=d.goals.map(g=>`⚽ ${g.team}: <b>${g.player}</b> ${g.min}'`).join('<br>');}
+ if(d.motm){box.style.display='block';box.innerHTML+='<br>🌟 MOTM: '+d.motm;}
+}
+renderAll();
+setInterval(()=>{renderAll();loadLive();},5000);
+loadLive();
 </script>
 </body>
 </html>
