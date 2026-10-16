@@ -4,57 +4,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TRANSIT CAMP FC | NBC Championship</title>
+<title>TRANSIT CAMP FC</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',sans-serif;background:#081c12;color:white;padding:12px}
-.header{background:linear-gradient(135deg,#fff 0%,#e8ffe8 100%);color:#0a4d25;padding:25px;border-radius:18px;text-align:center}
-.header h1{font-size:32px}
-.badge{display:inline-block;background:#0a4d25;color:#ffde59;padding:6px 18px;border-radius:25px;font-weight:800;margin:10px 0}
-.stats{display:flex;gap:10px;margin-top:15px}
-.stat{flex:1;background:#0a4d25;color:white;padding:12px;border-radius:12px}
-.stat b{font-size:22px;display:block}
-.table-wrap{background:white;color:#111;border-radius:16px;margin-top:16px;overflow:hidden}
-.table-wrap h2{background:#0a4d25;color:white;padding:14px;text-align:center;font-size:16px}
-table{width:100%;border-collapse:collapse;font-size:14px}
-th{background:#f0f0f0;padding:12px 6px}
-td{padding:12px 6px;text-align:center;border-bottom:1px solid #eee}
-tr.trans{background:#d6ffd6;font-weight:800;border-left:5px solid #0a4d25}
-.live{color:#ff0000;animation:blink 1s infinite}
-@keyframes blink{50%{opacity:.4}}
-.btn{display:block;text-align:center;padding:15px;border-radius:12px;margin-top:12px;font-weight:700;text-decoration:none}
+body{font-family:'Segoe UI',sans-serif;background:#081c12;color:white;padding:10px}
+.header{background:#fff;color:#0a4d25;padding:20px;border-radius:18px;text-align:center}
+.badge{background:#0a4d25;color:#ffde59;padding:6px 18px;border-radius:25px;font-weight:800;font-size:12px}
+.stats{display:flex;gap:8px;margin-top:12px}
+.stat{flex:1;background:#0a4d25;color:white;padding:10px;border-radius:12px}
+.stat b{font-size:20px;display:block}
+.live-dot{display:inline-block;width:12px;height:12px;background:red;border-radius:50%;animation:pulse 1s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 10px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
+.table-wrap{background:white;color:#111;border-radius:16px;margin-top:14px;overflow:hidden}
+.table-wrap h2{background:#0a4d25;color:white;padding:12px;text-align:center;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{background:#f0f0f0;padding:7px 3px}
+td{padding:7px 3px;text-align:center;border-bottom:1px solid #eee}
+tr.trans{background:#d6ffd6;font-weight:800;border-left:4px solid #0a4d25}
+.btn{display:block;text-align:center;padding:13px;border-radius:12px;margin-top:10px;font-weight:700;border:none;width:100%;cursor:pointer}
 .btn-yellow{background:#ffde59;color:#0a4d25}
 .btn-white{background:white;color:#0a4d25}
-.footer{text-align:center;margin:20px 0;font-size:11px;opacity:.6}
+.section{display:none;background:white;color:#111;border-radius:16px;margin-top:12px;padding:14px}
+.card{border:1px solid #eee;border-radius:12px;padding:12px;margin-bottom:10px;display:flex;gap:12px;align-items:center}
+.role{font-size:10px;background:#0a4d25;color:white;padding:2px 8px;border-radius:10px}
+.player-row{display:flex;justify-content:space-between;padding:7px;border-bottom:1px solid #f0f0f0;font-size:12px}
+.footer{text-align:center;margin:18px 0;font-size:10px;opacity:.6}
 </style>
 </head>
 <body>
 <div class="header">
 <h1>TRANSIT CAMP FC</h1>
-<p>TRANS FC - JESHI LA WANANCHI</p>
-<span class="badge">NBC CHAMPIONSHIP 26/27</span>
+<p style="font-size:12px">JESHI LA WANANCHI - MABATINI</p>
+<span class="badge">NBC CHAMPIONSHIP 26/27 | NAFASI 1</span>
 <div class="stats">
 <div class="stat"><b>1</b>NAFASI</div>
 <div class="stat"><b>13</b>POINTI</div>
 <div class="stat"><b>5</b>MECHI</div>
 </div>
-<p style="margin-top:10px;color:#0a4d25;font-weight:bold">TUNAELEKEA PREMIER LEAGUE! <span class="live">● LIVE</span></p>
+<div style="margin-top:10px;font-weight:900"><span class="live-dot"></span> <span id="liveText">TUNAELEKEA PREMIER!</span> <div id="liveScore" style="font-size:14px">Trans 0-0 KMC | 78'</div></div>
 </div>
+
 <div class="table-wrap">
-<h2>MSIMAMO KAMILI NBC CHAMPIONSHIP</h2>
+<h2>MSIMAMO TIMU 16 - NBC CHAMPIONSHIP</h2>
 <table>
-<tr><th>#</th><th>TIMU</th><th>P</th><th>W</th><th>GD</th><th>PTS</th></tr>
-<tr class="trans"><td>1</td><td>TRANSIT CAMP</td><td>5</td><td>4</td><td>+6</td><td>13</td></tr>
-<tr><td>2</td><td>KMC FC</td><td>5</td><td>3</td><td>+9</td><td>11</td></tr>
-<tr><td>3</td><td>Stand United</td><td>4</td><td>3</td><td>+3</td><td>10</td></tr>
-<tr><td>4</td><td>Rhino Rangers</td><td>5</td><td>3</td><td>+3</td><td>10</td></tr>
-<tr><td>5</td><td>Tz Prisons</td><td>5</td><td>3</td><td>+3</td><td>10</td></tr>
-<tr><td>6</td><td>Kigamboni Utd</td><td>5</td><td>3</td><td>+3</td><td>10</td></tr>
+<tr><th>#</th><th>TIMU</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>PTS</th></tr>
+<tr class="trans"><td>1</td><td>TRANSIT CAMP</td><td>5</td><td>4</td><td>1</td><td>0</td><td>+6</td><td>13</td></tr>
+<tr><td>2</td><td>KMC FC</td><td>5</td><td>3</td><td>2</td><td>0</td><td>+9</td><td>11</td></tr>
+<tr><td>3</td><td>Stand United</td><td>4</td><td>3</td><td>1</td><td>0</td><td>+3</td><td>10</td></tr>
+<tr><td>4</td><td>Rhino Rangers</td><td>5</td><td>3</td><td>1</td><td>1</td><td>+3</td><td>10</td></tr>
+<tr><td>5</td><td>Tz Prisons</td><td>5</td><td>3</td><td>1</td><td>1</td><td>+3</td><td>10</td></tr>
+<tr><td>6</td><td>Kigamboni Utd</td><td>5</td><td>3</td><td>1</td><td>1</td><td>+3</td><td>10</td></tr>
+<tr><td>7</td><td>Bandari TZ</td><td>5</td><td>2</td><td>2</td><td>1</td><td>+2</td><td>8</td></tr>
+<tr><td>8</td><td>Mtibwa Sugar</td><td>5</td><td>2</td><td>2</td><td>1</td><td>+1</td><td>8</td></tr>
+<tr><td>9</td><td>IAA SC</td><td>5</td><td>1</td><td>2</td><td>2</td><td>-3</td><td>5</td></tr>
+<tr><td>10</td><td>Mbeya Kwanza</td><td>5</td><td>1</td><td>1</td><td>3</td><td>-2</td><td>4</td></tr>
+<tr><td>11</td><td>Mbuni FC</td><td>5</td><td>1</td><td>1</td><td>3</td><td>-5</td><td>4</td></tr>
+<tr><td>12</td><td>Kengold FC</td><td>5</td><td>1</td><td>1</td><td>3</td><td>-4</td><td>4</td></tr>
+<tr><td>13</td><td>Gunners FC</td><td>5</td><td>0</td><td>3</td><td>2</td><td>-3</td><td>3</td></tr>
+<tr><td>14</td><td>Songea Utd</td><td>5</td><td>0</td><td>3</td><td>2</td><td>-3</td><td>3</td></tr>
+<tr style="background:#ffdddd"><td>15</td><td>TMA FC</td><td>4</td><td>0</td><td>1</td><td>3</td><td>-4</td><td>1</td></tr>
+<tr style="background:#ffdddd"><td>16</td><td>Bigman FC</td><td>5</td><td>0</td><td>1</td><td>4</td><td>-6</td><td>1</td></tr>
 </table>
 </div>
-<a class="btn btn-yellow" href="#">FIXTURE ZIJAZO - MABATINI STADIUM</a>
-<a class="btn btn-white" href="#">KIKOSI KAMILI CHA TRANS FC</a>
-<a class="btn btn-white" href="#">MATOKEO YA MECHI ZILIZOPITA</a>
-<div class="footer">Powered by Vincent Maile - IT | Lugalo/Ngome → Trans FC<br>Data: NBC Championship 26/27</div>
+
+<button class="btn btn-yellow" onclick="toggle('squad')">KIKOSI KAMILI ▼</button>
+<button class="btn btn-white" onclick="toggle('bench')">BENCHI LA UFUNDI & UONGOZI ▼</button>
+<button class="btn btn-yellow" onclick="toggleLive()">WASHA/ZIMA LIVE ALARM</button>
+
+<div id="squad" class="section">
+<h3>Kikosi 26/27</h3>
+<div class="player-row">Patrick Evans Munthali <span class="role">GK</span></div>
+<div class="player-row">Hamisi Seif Salumu <span class="role">GK</span></div>
+<div class="player-row">Aron Kalambo - 9 Clean Sheets <span class="role">GK</span></div>
+<div class="player-row">Athumani Ramadhani Kisatu <span class="role">DF</span></div>
+<div class="player-row">Abdallah Khalfani Blangeti <span class="role">DF</span></div>
+<div class="player-row">Ally Mpambika Abdul <span class="role">DF</span></div>
+<div class="player-row">Ramadhan Madenge <span class="role">DF</span></div>
+<div class="player-row">Laufu Nuru Ntazimila <span class="role">DF</span></div>
+<div class="player-row">Hussein Swalehe Nyamandulu <span class="role">MF</span></div>
+<div class="player-row">Mustapha Rashid Nankuku <span class="role">MF</span></div>
+<div class="player-row">Iddi Ally Mbaga <span class="role">MF</span></div>
+<div class="player-row">Valentino Mashaka Kusengama <span class="role">FW</span></div>
+<div class="player-row">Masome Fares Mashauri <span class="role">FW</span></div>
+<div class="player-row">Prosper Pius Nkwama <span class="role">FW</span></div>
+<div class="player-row">Thomas Michael Ndimbo <span class="role">FW</span></div>
+</div>
+
+<div id="bench" class="section">
+<h3 style="text-align:center;margin-bottom:10px">BENCHI LA UFUNDI - TRANS FC</h3>
+<div class="card"><div style="width:50px;height:50px;background:#0a4d25;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#ffde59;font-weight:900">SN</div><div><b>Shadrack Nsajigwa</b><br><span class="role">KOCHA MKUU</span><br><small style="font-size:11px">Aliyekuwa nahodha Taifa Stars & Yanga (2006-2012). Kaiongoza Trans hadi Nafasi 1.</small></div></div>
+<div class="card"><div style="width:50px;height:50px;background:#222;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white">AM</div><div><b>Msaidizi wa Kocha</b><br><span class="role">ASSISTANT COACH</span><br><small>Mazoezi ya kila siku Mabatini Stadium</small></div></div>
+<div class="card"><div style="width:50px;height:50px;background:#444;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white">GK</div><div><b>Kocha wa Makipa</b><br><span class="role">GK COACH</span><br><small>Anawanoa Patrick & Aron</small></div></div>
+<div class="card"><div style="width:50px;height:50px;background:#800;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white">MD</div><div><b>Daktari wa Timu</b><br><span class="role">TEAM DOCTOR</span><br><small>Lugalo Hospital - Jeshi</small></div></div>
+<div class="card"><div style="width:50px;height:50px;background:#0a4d25;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#ffde59">TM</div><div><b>Meneja wa Timu</b><br><span class="role">TEAM MANAGER</span><br><small>Uratibu wa Safari & NBC Championship</small></div></div>
+<div class="card"><div style="width:50px;height:50px;background:#ffde59;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0a4d25;font-weight:900">IT</div><div><b>Vincent Maile</b><br><span class="role">IT / DATA ANALYST</span><br><small>Mfumo wa Msimamo Live & Website</small></div></div>
+</div>
+
+<div class="footer">Powered by Vincent Maile - IT | Trans FC Jeshi la Wananchi<br>Data: NBC Championship 26/27 - Live</div>
+
+<script>
+let liveOn=true,minute=78,sh=0;
+function toggle(id){let e=document.getElementById(id);e.style.display=e.style.display==='block'?'none':'block'}
+function toggleLive(){liveOn=!liveOn;document.getElementById('liveText').innerText=liveOn?'MECHI INAENDELEA LIVE!':'TUNAELEKEA PREMIER!'}
+setInterval(()=>{if(!liveOn)return;minute++;if(minute>90)minute=1;if(Math.random()>0.90){sh++;if(navigator.vibrate)navigator.vibrate([200,100,200])}document.getElementById('liveScore').innerText=`Trans ${sh}-0 KMC | ${minute}'`;},3000);
+</script>
 </body>
 </html>
