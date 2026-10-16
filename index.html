@@ -1,121 +1,77 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TRANSIT CAMP FC - KMC COMPLEX</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRANSIT CAMP FC - LIVE</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',sans-serif;background:#081c12;color:white;padding:10px}
-.header{background:#fff;color:#0a4d25;padding:18px;border-radius:18px;text-align:center}
-.badge{background:#0a4d25;color:#ffde59;padding:6px 16px;border-radius:20px;font-weight:800;font-size:11px}
-.venue{background:#ffde59;color:#0a4d25;padding:8px;border-radius:8px;text-align:center;font-weight:900;font-size:12px;margin-top:8px}
-.stats{display:flex;gap:8px;margin-top:10px}
-.stat{flex:1;background:#0a4d25;color:white;padding:8px;border-radius:10px;text-align:center}
-.stat b{font-size:20px;display:block}
-.live-dot{width:10px;height:10px;background:gray;border-radius:50%;display:inline-block}
-.live-dot.on{background:red;animation:pulse 1s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 red}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
-.card{background:white;color:#111;border-radius:14px;margin-top:12px;overflow:hidden;padding:12px}
-.card h3{background:#0a4d25;color:white;padding:10px;border-radius:8px;text-align:center;font-size:13px;margin-bottom:8px}
-table{width:100%;border-collapse:collapse;font-size:11px}
-th{background:#eee;padding:6px}td{padding:6px;text-align:center;border-bottom:1px solid #eee}
-tr.trans{background:#d6ffd6;font-weight:800}
-.next{background:#0a4d25;color:#ffde59;padding:12px;border-radius:10px;margin-top:10px;font-weight:900;text-align:center}
-.next.live{background:#ffde59;color:#0a4d25}
-.player-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.player{background:#f0f7f0;padding:8px;border-radius:8px;border-left:4px solid #0a4d25}
-.player b{font-size:11px} .player small{display:block;font-size:9px;color:#555}
-.staff{display:flex;gap:8px;flex-wrap:wrap}
-.staff-card{flex:1;min-width:110px;background:#0a4d25;color:white;padding:10px;border-radius:10px;text-align:center}
-.staff-card b{display:block;font-size:11px;color:#ffde59}
-.staff-card small{font-size:9px}
+body{margin:0;font-family:Arial;background:#081c12;color:white;text-align:center}
+.header{background:#ffde59;color:#081c12;padding:15px;font-weight:900;font-size:22px}
+.score-box{background:white;color:black;margin:15px;border-radius:16px;padding:20px}
+.score{font-size:56px;font-weight:900}
+.live{color:red;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0}}
+.card{background:white;color:black;margin:10px;border-radius:12px;padding:15px;text-align:left}
+.hist{background:#081c12;border:1px solid #ffde59;color:white}
+.social{padding:20px} .social a{padding:12px 18px;border-radius:25px;color:white;text-decoration:none;margin:5px;display:inline-block;font-weight:bold}
 </style>
 </head>
 <body>
-<div class="header">
-<h1>TRANSIT CAMP FC</h1>
-<p style="font-size:11px">PEOPLE'S ARMY - KMC COMPLEX</p>
-<span class="badge">NBC CHAMPIONSHIP | 1ST PLACE - 13 PTS</span>
-<div class="venue">📍 KMC COMPLEX - TOMORROW 15:00</div>
-<div class="stats">
-<div class="stat"><b>1</b><small>SPACE</small></div>
-<div class="stat"><b>13</b><small>PTS</small></div>
-<div class="stat"><b>5</b><small>MATCH</small></div>
-</div>
-<div style="margin-top:10px">
-<span id="dot" class="live-dot"></span> <span id="txt">KESHO KMC COMPLEX</span>
-<div id="score" class="next">TRANS vs KMC - KMC COMPLEX 15:00</div>
-</div>
+<div class="header">TRANSIT CAMP FC - KIMARA</div>
+<div class="score-box">
+<div id="liveStatus"></div>
+<div id="matchTitle">TRANSIT CAMP FC vs KMC FC</div>
+<div class="score"><span id="sh">0</span> - <span id="sa">0</span></div>
+<div>Dakika <span id="min">0</span>'</div>
+<div>Uwanja: KMC Complex</div>
 </div>
 <div class="card">
-<h3>🏆 MSIMAMO TIMU 16 - NBC CHAMPIONSHIP</h3>
-<table>
-<tr><th>#</th><th>TIMU</th><th>P</th><th>PTS</th></tr>
-<tr class="trans"><td>1</td><td>TRANSIT CAMP</td><td>5</td><td>13</td></tr>
-<tr><td>2</td><td>KMC FC</td><td>5</td><td>11</td></tr>
-<tr><td>3</td><td>Stand Utd</td><td>4</td><td>10</td></tr>
-<tr><td>4</td><td>Rhino</td><td>5</td><td>10</td></tr>
-<tr><td>5</td><td>Tz Prisons</td><td>5</td><td>10</td></tr>
-<tr><td>6</td><td>Kigamboni</td><td>5</td><td>10</td></tr>
-<tr><td>7</td><td>Port TZ</td><td>5</td><td>8</td></tr>
-<tr><td>8</td><td>Mtibwa</td><td>5</td><td>8</td></tr>
-<tr><td>9</td><td>IAA SC</td><td>5</td><td>5</td></tr>
-<tr><td>10</td><td>Mbeya First</td><td>5</td><td>4</td></tr>
-<tr><td>11</td><td>Mbuni FC</td><td>5</td><td>4</td></tr>
-<tr><td>12</td><td>Kengold</td><td>5</td><td>4</td></tr>
-<tr><td>13</td><td>Gunners</td><td>5</td><td>3</td></tr>
-<tr><td>14</td><td>Songea Utd</td><td>5</td><td>3</td></tr>
-<tr><td>15</td><td>TMA FC</td><td>4</td><td>1</td></tr>
-<tr><td>16</td><td>Bigman FC</td><td>5</td><td>1</td></tr>
-</table>
+<h3>⚽ MAGOLI LIVE</h3>
+<div style="display:flex;gap:10px;">
+<div style="flex:1;background:#e8ffe8;padding:10px;border-radius:8px;">
+<b style="color:green;">🟢 TRANSIT CAMP</b>
+<div id="goalsTrans" style="margin-top:8px;">Hakuna goli</div>
 </div>
-<div class="card">
-<h3>⚽ KIKOSI HALISI - TRANSIT CAMP FC 2026/27</h3>
-<div class="player-grid">
-<div class="player"><b>1. Patrick Evans Munthali</b><small>Golikipa</small></div>
-<div class="player"><b>16. Hamisi Seif Salumu</b><small>Golikipa</small></div>
-<div class="player"><b>2. Athumani Ramadhani Kisatu</b><small>Beki wa Kati</small></div>
-<div class="player"><b>3. Abdallah Khalfani Blangeti</b><small>Beki Kushoto</small></div>
-<div class="player"><b>4. Ally Mpambika Abdul</b><small>Beki Kulia - NAHODHA</small></div>
-<div class="player"><b>5. Ramadhan Madenge</b><small>Beki wa Kati</small></div>
-<div class="player"><b>12. Laufu Nuru Ntazimila</b><small>Beki</small></div>
-<div class="player"><b>15. Amir Said Njeru</b><small>Beki</small></div>
-<div class="player"><b>22. Seifu Zaidi Ibrahimu</b><small>Beki</small></div>
-<div class="player"><b>6. Hussein Swalehe Nyamandulu</b><small>Kiungo Mkabaji</small></div>
-<div class="player"><b>8. Mustapha Rashid Nankuku</b><small>Kiungo</small></div>
-<div class="player"><b>10. Iddi Ally Mbaga</b><small>Kiungo Mshambuliaji</small></div>
-<div class="player"><b>14. Karegea Wazanga Marusu</b><small>Kiungo</small></div>
-<div class="player"><b>18. Hassani Omary Gumbo</b><small>Kiungo</small></div>
-<div class="player"><b>20. Cecil Efrem Cornel Luambano</b><small>Kiungo</small></div>
-<div class="player"><b>7. Valentino Mashaka Kusengama</b><small>Mshambuliaji</small></div>
-<div class="player"><b>9. Masome Fares Mashauri</b><small>Mshambuliaji - Top Scorer</small></div>
-<div class="player"><b>11. Prosper Pius Nkwama</b><small>Mshambuliaji</small></div>
-<div class="player"><b>19. Thomas Michael Ndimbo</b><small>Mshambuliaji</small></div>
+<div style="flex:1;background:#ffe8e8;padding:10px;border-radius:8px;">
+<b style="color:red;">🔴 KMC FC</b>
+<div id="goalsKmc" style="margin-top:8px;">Hakuna goli</div>
 </div>
 </div>
-<div class="card">
-<h3>🎖️ BENCHI LA UFUNDI - KMC COMPLEX</h3>
-<div class="staff">
-<div class="staff-card"><b>KOCHA MKUU</b><small>Coach Juma<br>Licence C</small></div>
-<div class="staff-card"><b>KOCHA MSAIDIZI</b><small>Coach Seif<br>Tactics</small></div>
-<div class="staff-card"><b>KOCHA MAGOLIKIPA</b><small>Coach Ally<br>GK Trainer</small></div>
-<div class="staff-card" style="background:#c00"><b>TEAM DOCTOR</b><small>Dr. Lugalo<br>Lugalo Military Hospital</small></div>
-<div class="staff-card" style="background:#ffde59;color:#111;border:2px solid #0a4d25"><b>IT ANALYST</b><small>Vincent Maile<br>KMC Complex</small></div>
-<div class="staff-card"><b>TEAM MANAGER</b><small>Meneja Mkuu</small></div>
+<h3 style="margin-top:15px;">🌟 MCHEZAJI BORA WA MECHI</h3>
+<div id="liveMotm" style="background:#fff8c4;padding:10px;border-radius:8px;font-weight:bold;">Bado hajachaguliwa</div>
 </div>
+<div class="card hist">
+<h3 style="color:#ffde59;">📚 HISTORIA + RATIBA INAYOFUATA</h3>
+<div id="historyList">Inapakia historia...</div>
 </div>
-<div style="text-align:center;margin:18px 0;font-size:10px;opacity:.6">KMC COMPLEX | Lugalo Military Hospital | IT: Vincent Maile</div>
+<div class="social">
+<a href="https://facebook.com/" style="background:#1877F2">📘 Facebook</a>
+<a href="https://instagram.com/" style="background:#E1306C">📸 Instagram</a>
+<a href="https://wa.me/255700000000" style="background:#25D366">💬 WhatsApp</a>
+</div>
 <script>
-function check(){
-let d=JSON.parse(localStorage.getItem('trans_live')||'{"sh":0,"sa":0,"min":0,"match":"TRANS vs KMC - KMC COMPLEX","live":false}');
-let dot=document.getElementById('dot');
-let txt=document.getElementById('txt');
-let sc=document.getElementById('score');
-if(d.live){dot.classList.add('on');txt.innerText='LIVE KMC COMPLEX!';sc.classList.add('live');sc.innerText=d.match+' | '+d.sh+'-'+d.sa+" | "+d.min+"'";}
-else{dot.classList.remove('on');txt.innerText='KESHO KMC COMPLEX 15:00';sc.classList.remove('live');sc.innerText='MECHI IJAYO: '+d.match+' | KMC COMPLEX 15:00';}
+function load(){
+ let d=JSON.parse(localStorage.getItem('trans_live')||'{"team1":"TRANSIT CAMP FC","team2":"KMC FC","sh":0,"sa":0,"min":0,"match":"TRANSIT CAMP FC vs KMC FC","live":false,"goals":[],"motm":""}');
+ document.getElementById('matchTitle').innerText=d.match;
+ document.getElementById('sh').innerText=d.sh;
+ document.getElementById('sa').innerText=d.sa;
+ document.getElementById('min').innerText=d.min;
+ document.getElementById('liveStatus').innerHTML=d.live?'<span class=live>🔴 LIVE KMC COMPLEX</span>':'⚪ Bado Haijaanza';
+ if(d.goals&&d.goals.length>0){
+  let trans = d.goals.filter(g=>g.team.includes('TRANS'));
+  let kmc = d.goals.filter(g=>!g.team.includes('TRANS'));
+  document.getElementById('goalsTrans').innerHTML = trans.length>0 ? trans.map(g=>`⚽ <b>${g.player}</b> - Dk ${g.min}'`).join('<br>') : 'Hakuna goli';
+  document.getElementById('goalsKmc').innerHTML = kmc.length>0 ? kmc.map(g=>`⚽ <b>${g.player}</b> - Dk ${g.min}'`).join('<br>') : 'Hakuna goli';
+ }
+ if(d.motm){document.getElementById('liveMotm').innerText=d.motm;}
+ let hist=JSON.parse(localStorage.getItem('trans_history')||'[]');
+ let next=JSON.parse(localStorage.getItem('trans_next')||'{}');
+ let html='';
+ if(hist.length>0){html+=hist.slice().reverse().map(h=>`<div style="border-bottom:1px solid #333;padding:8px 0;"><b>${h.match}</b> ${h.score}<br><small>${(h.goals||[]).map(g=>g.player+' '+g.min+"'").join(', ')} | MOTM: ${h.motm}</small></div>`).join('');}
+ else{html+='Mechi ya kwanza: Kesho vs KMC Complex<br>';}
+ if(next.opp){html+=`<div style="margin-top:12px;background:#ffde59;color:black;padding:10px;border-radius:8px;"><b>INAYOFUATA:</b> vs ${next.opp} - ${next.date} - ${next.venue}</div>`;}
+ document.getElementById('historyList').innerHTML=html;
 }
-setInterval(check,1000);check();
+setInterval(load,3000);load();
 </script>
 </body>
 </html>
