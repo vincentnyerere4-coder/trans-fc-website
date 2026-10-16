@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADMIN - TRANS FC LIVE</title>
+<style>
+body{font-family:sans-serif;background:#111;color:white;padding:15px;max-width:400px;margin:auto}
+h2{text-align:center;color:#ffde59}
+.box{background:#222;border-radius:14px;padding:15px;margin-top:12px}
+input,button{width:100%;padding:14px;margin-top:8px;border-radius:10px;border:none;font-size:16px;font-weight:700}
+button{cursor:pointer}
+.btn-goal{background:#0a4d25;color:white}
+.btn-yellow{background:#ffde59;color:#111}
+.btn-red{background:#d00;color:white}
+.pass{border:2px solid #ffde59}
+.score{font-size:48px;text-align:center;margin:10px 0;font-weight:900}
+</style>
+</head>
+<body>
+<h2>TRANS FC ADMIN</h2>
+<div class="box">
+<input id="pwd" type="password" placeholder="Password: trans2026" class="pass">
+<button onclick="login()" class="btn-yellow" id="loginBtn">INGIA</button>
+</div>
+
+<div id="panel" style="display:none">
+<div class="box">
+<small>Mechi:</small>
+<input id="match" value="TRANS vs KMC - Mabatini">
+<div class="score"><span id="sh">0</span> - <span id="sa">0</span></div>
+<small>Dakika:</small>
+<input id="min" type="number" value="0" min="0" max="120">
+<button onclick="changeMin(1)" class="btn-yellow">+1 DAKIKA</button>
+</div>
+
+<div class="box">
+<button onclick="goal('home')" class="btn-goal">⚽ GOLI TRANS +1</button>
+<button onclick="goal('away')" style="background:#444;color:white">⚽ GOLI Mpinzani +1</button>
+<button onclick="resetGoal()" style="background:#333;color:#aaa">Rudisha 0-0</button>
+</div>
+
+<div class="box">
+<button onclick="updateLive(true)" class="btn-yellow">🔴 WASHA LIVE (Mashabiki waone)</button>
+<button onclick="updateLive(false)" class="btn-red">⚫ ZIMA LIVE / MECHI IMEISHA</button>
+</div>
+
+<div class="box" style="background:#0a4d25">
+<p id="status" style="font-size:13px"></p>
+<p style="font-size:11px;opacity:.7;margin-top:8px">Kesho uwandani: Bonyeza WASHA LIVE mechi ikianza, ukiona goli bonyeza GOLI TRANS. Mashabiki wote wataona live!</p>
+</div>
+</div>
+
+<script>
+let data = JSON.parse(localStorage.getItem('trans_live') || '{"sh":0,"sa":0,"min":0,"match":"TRANS vs KMC - Mabatini","live":false}');
+function login(){
+  if(document.getElementById('pwd').value !== 'trans2026'){alert('Password si sahihi! Weka trans2026');return;}
+  document.getElementById('panel').style.display='block';
+  document.getElementById('loginBtn').style.display='none';
+  load();
+}
+function load(){
+  document.getElementById('sh').innerText=data.sh;
+  document.getElementById('sa').innerText=data.sa;
+  document.getElementById('min').value=data.min;
+  document.getElementById('match').value=data.match;
+  updateStatus();
+}
+function save(){
+  data.min=parseInt(document.getElementById('min').value)||0;
+  data.match=document.getElementById('match').value;
+  localStorage.setItem('trans_live', JSON.stringify(data));
+  localStorage.setItem('trans_live_update', Date.now());
+  updateStatus();
+}
+function goal(team){
+  if(team==='home') data.sh++; else data.sa++;
+  save(); load();
+  if(navigator.vibrate) navigator.vibrate([400,100,400]);
+}
+function resetGoal(){data.sh=0;data.sa=0;save();load();}
+function changeMin(n){let m=document.getElementById('min');m.value=parseInt(m.value||0)+n;save();}
+function updateLive(isLive){
+  data.live=isLive;
+  save();
+  alert(isLive ? 'LIVE IMEWASHWA! Sasa mashabiki wanaona LIVE' : 'LIVE IMEZIMWA - Mechi imeisha');
+}
+function updateStatus(){
+  document.getElementById('status').innerText=`SASA: ${data.match} | ${data.sh}-${data.sa} | ${data.min}' | Live: ${data.live ? 'NDIO 🔴' : 'HAPANA'}`;
+}
+setInterval(save, 1000);
+</script>
+</body>
+</html>
