@@ -2,95 +2,114 @@
 <html lang="sw">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TRANSIT CAMP FC - KIMARA</title>
+<title>TRANSIT CAMP FC - 2025/26</title>
 <style>
-body{margin:0;font-family:Arial;background:#081c12;color:white;text-align:center}
-.header{background:#ffde59;color:#081c12;padding:15px;font-weight:900;font-size:22px;position:sticky;top:0;z-index:10}
-.score-box{background:white;color:black;margin:15px;border-radius:16px;padding:20px}
-.score{font-size:56px;font-weight:900}
-.live{color:red;animation:blink 1s infinite} @keyframes blink{50%{opacity:0}}
-.card{background:white;color:black;margin:10px;border-radius:12px;padding:15px;text-align:left}
-.tabs{display:flex;gap:5px;overflow-x:auto;padding:10px} .tab{padding:10px 15px;background:#1a3a26;color:white;border-radius:20px;white-space:nowrap;cursor:pointer} .tab.active{background:#ffde59;color:black;font-weight:900}
-.section{display:none} .section.active{display:block}
-table{width:100%;border-collapse:collapse;font-size:13px} th{background:#081c12;color:#ffde59;padding:8px} td{padding:7px;border-bottom:1px solid #ddd}
-.player{display:flex;align-items:center;gap:10px;padding:8px;border-bottom:1px solid #eee} .player img{width:45px;height:45px;border-radius:50%;background:#ddd}
-.social{padding:20px} .social a{padding:12px 18px;border-radius:25px;color:white;text-decoration:none;margin:5px;display:inline-block;font-weight:bold}
+*{margin:0;padding:0;box-sizing:border-box} body{background:#0a2210;font-family:Arial;padding:8px}
+.top-card{background:white;border-radius:18px;padding:18px 12px;text-align:center;margin-bottom:10px}
+.top-card h1{color:#0a4a25;font-size:28px;font-weight:900} .top-card p{color:#0a4a25;font-size:13px}
+.badge{background:#0a2210;color:#ffde59;padding:6px 18px;border-radius:20px;display:inline-block;font-weight:900;font-size:13px;margin:8px 0}
+.stats{display:flex;gap:8px;justify-content:center;margin:12px 0} .stat{background:#0a4a25;color:white;flex:1;border-radius:12px;padding:10px 5px;text-align:center} .stat b{font-size:22px;display:block}
+.live-text{color:#0a4a25;font-weight:900;margin-top:10px;font-size:14px} .dot{width:12px;height:12px;background:red;border-radius:50%;display:inline-block;animation:blink 1s infinite} @keyframes blink{50%{opacity:0}}
+.table-card{background:white;border-radius:12px;overflow:hidden;margin-bottom:10px}
+.table-head{background:#0a4a25;color:white;text-align:center;padding:10px;font-weight:900;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:12px} th{background:#e9e9e9;color:#333;padding:8px 4px} td{padding:8px 4px;border-bottom:1px solid #eee;text-align:center} td:nth-child(2){text-align:left;padding-left:8px}
+tr.first{background:#d8f0d8;font-weight:900} tr.last{background:#ffd6d6}
+.btn{background:#ffde59;color:#0a4a25;padding:14px;border-radius:12px;text-align:center;font-weight:900;margin:8px 0;cursor:pointer;display:block;width:100%;border:none;font-size:14px}
+.btn-white{background:white;color:#0a4a25}
+.squad-box{padding:12px;text-align:left;font-size:13px;line-height:1.8} .pos{font-weight:900;color:#0a4a25;margin-top:10px;display:block;background:#ffde59;padding:4px 8px;border-radius:6px}
+.goals-list{font-size:12px;text-align:left;margin-top:8px;background:#f5f5f5;padding:8px;border-radius:8px;color:black}
 </style>
 </head>
 <body>
-<div class="header">TRANSIT CAMP FC - KIMARA</div>
-<div class="score-box">
-<div id="liveStatus"></div>
-<div id="matchTitle">TRANSIT CAMP FC vs KMC FC</div>
-<div class="score"><span id="sh">0</span> - <span id="sa">0</span></div>
-<div>Dakika <span id="min">0</span>' - <span id="stad">KMC Complex</span></div>
-<div style="display:flex;gap:10px;margin-top:12px;">
-<div style="flex:1;background:#e8ffe8;padding:10px;border-radius:8px;"><b style="color:green;">🟢 TRANSIT CAMP</b><div id="goalsTrans">Hakuna goli</div></div>
-<div style="flex:1;background:#ffe8e8;padding:10px;border-radius:8px;"><b style="color:red;">🔴 KMC FC</b><div id="goalsKmc">Hakuna goli</div></div>
+<div class="top-card">
+<h1>TRANSIT CAMP FC</h1>
+<p>PEOPLE'S ARMY - MABATINI</p>
+<div class="badge">NBC CHAMPIONSHIP 26/27 | 1ST PLACE</div>
+<div class="stats">
+<div class="stat"><b>1</b><span>SPACE</span></div>
+<div class="stat"><b id="pts">13</b><span>POINTS</span></div>
+<div class="stat"><b>5</b><span>MATCH</span></div>
 </div>
-<div id="liveMotm" style="margin-top:10px;background:#fff8c4;padding:10px;border-radius:8px;font-weight:bold;text-align:center;">MOTM: Bado</div>
+<div class="live-text"><span class="dot"></span> WE ARE GOING TO THE PREMIERE!<br><span id="liveScore">Trans 4-0 KMC | 30'</span></div>
+<div id="goalsBox" class="goals-list" style="display:none"></div>
 </div>
-<div class="tabs">
-<div class="tab active" onclick="show('msimamo')">📊 Msimamo</div>
-<div class="tab" onclick="show('wachezaji')">👕 Wachezaji</div>
-<div class="tab" onclick="show('bench')">👔 Benchi la Ufundi</div>
-<div class="tab" onclick="show('history')">📚 Historia</div>
-</div>
-<div id="msimamo" class="section active card">
-<h3>🏆 MSIMAMO CHAMPIONSHIP 2025/26</h3>
-<table id="tableStandings">
-<tr><th>#</th><th>Timu</th><th>P</th><th>W</th><th>Pts</th></tr>
-<tr><td>1</td><td>TRANSIT CAMP FC</td><td>5</td><td>+4</td><td>12</td></tr>
-<tr><td>2</td><td>KMC FC</td><td>5</td><td>+3</td><td>10</td></tr>
-<tr><td>3</td><td>Mbeya City</td><td>5</td><td>+2</td><td>9</td></tr>
-<tr><td>4</td><td>Coastal Union</td><td>5</td><td>+1</td><td>8</td></tr>
-<tr><td>5</td><td>Pamba Jiji</td><td>5</td><td>0</td><td>7</td></tr>
-<tr><td>6</td><td>Kitayosce</td><td>5</td><td>-1</td><td>6</td></tr>
-<tr><td>7</td><td>Stand United</td><td>5</td><td>-2</td><td>5</td></tr>
-<tr><td>8</td><td>Biashara United</td><td>5</td><td>-3</td><td>4</td></tr>
-<tr><td colspan="5" style="text-align:center;color:gray;">... hadi 16 - Unaweza kuhariri kwenye admin</td></tr>
+<div class="table-card">
+<div class="table-head">16 TEAMS STANDINGS - NBC CHAMPIONSHIP</div>
+<table>
+<tr><th>#</th><th>TEAM</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>PTS</th></tr>
+<tr class="first"><td>1</td><td>TRANSIT CAMP</td><td>5</td><td>4</td><td>1</td><td>0</td><td>+6</td><td>13</td></tr>
+<tr><td>2</td><td>KMC FC</td><td>5</td><td>3</td><td>2</td><td>0</td><td>+9</td><td>11</td></tr>
+<tr><td>3</td><td>Stand United</td><td>4</td><td>3</td><td>1</td><td>0</td><td>+3</td><td>10</td></tr>
+<tr><td>4</td><td>Rhino Rangers</td><td>5</td><td>3</td><td>1</td><td>1</td><td>+3</td><td>10</td></tr>
+<tr><td>5</td><td>Tz Prisons</td><td>5</td><td>3</td><td>1</td><td>1</td><td>+3</td><td>10</td></tr>
+<tr><td>6</td><td>Kigamboni Utd</td><td>5</td><td>3</td><td>1</td><td>1</td><td>+3</td><td>10</td></tr>
+<tr><td>7</td><td>Port TZ</td><td>5</td><td>2</td><td>2</td><td>1</td><td>+2</td><td>8</td></tr>
+<tr><td>8</td><td>Mtibwa Sugar</td><td>5</td><td>2</td><td>2</td><td>1</td><td>+1</td><td>8</td></tr>
+<tr><td>9</td><td>IAA SC</td><td>5</td><td>1</td><td>2</td><td>2</td><td>-3</td><td>5</td></tr>
+<tr><td>10</td><td>Mbeya First</td><td>5</td><td>1</td><td>1</td><td>3</td><td>-2</td><td>4</td></tr>
+<tr><td>11</td><td>Mbuni FC</td><td>5</td><td>1</td><td>1</td><td>3</td><td>-5</td><td>4</td></tr>
+<tr><td>12</td><td>Kengold FC</td><td>5</td><td>1</td><td>1</td><td>3</td><td>-4</td><td>4</td></tr>
+<tr><td>13</td><td>Gunners FC</td><td>5</td><td>0</td><td>3</td><td>2</td><td>-3</td><td>3</td></tr>
+<tr><td>14</td><td>Songea Utd</td><td>5</td><td>0</td><td>3</td><td>2</td><td>-3</td><td>3</td></tr>
+<tr class="last"><td>15</td><td>TMA FC</td><td>4</td><td>0</td><td>1</td><td>3</td><td>-4</td><td>1</td></tr>
+<tr class="last"><td>16</td><td>Bigman FC</td><td>5</td><td>0</td><td>1</td><td>4</td><td>-6</td><td>1</td></tr>
 </table>
 </div>
-<div id="wachezaji" class="section card">
-<h3>👕 KIKOSI CHA WACHEZAJI</h3>
-<div class="player"><img><div><b>Juma K. - #9</b><br><small>Mshambuliaji | Magoli 4</small></div></div>
-<div class="player"><img><div><b>Kante - #8</b><br><small>Kiungo | MOTM 2</small></div></div>
-<div class="player"><img><div><b>Musa - #1</b><br><small>Golikipa | Clean Sheet 2</small></div></div>
-<div class="player"><img><div><b>Baraka - #5</b><br><small>Beki | Mechi 5</small></div></div>
-<div style="color:gray;text-align:center;margin-top:10px;">Ongeza wachezaji wote 25 kwenye admin</div>
-</div>
-<div id="bench" class="section card">
-<h3>👔 BENCHI LA UFUNDI</h3>
-<div class="player"><img><div><b>Kocha Mkuu: Coach Vincent</b><br><small>Leseni CAF B | Mechi 5</small></div></div>
-<div class="player"><img><div><b>Kocha Msaidizi: Coach Ally</b><br><small>Tactics & Fitness</small></div></div>
-<div class="player"><img><div><b>Golikipa Kocha: Coach Juma</b><br><small>Goalkeeping</small></div></div>
-<div class="player"><img><div><b>Meneja: Nyerere</b><br><small>Team Manager</small></div></div>
-</div>
-<div id="history" class="section card" style="background:#081c12;color:white;border:1px solid #ffde59;">
-<h3 style="color:#ffde59;">📚 HISTORIA + RATIBA</h3>
-<div id="historyList">Inapakia...</div>
-</div>
-<div class="social">
-<a href="https://facebook.com/" style="background:#1877F2">📘 Facebook</a>
-<a href="https://instagram.com/" style="background:#E1306C">📸 Instagram</a>
-<a href="https://wa.me/255700000000" style="background:#25D366">💬 WhatsApp</a>
-</div>
+<button class="btn" onclick="toggle('squad')">FULL SQUAD 2025/26 ▼</button>
+<div id="squad" class="table-card"><div class="squad-box">
+<span class="pos">🧤 GOALKEEPERS - Makipa</span>
+1. Musa Ramadhan - #1 - 26yrs<br>
+2. Juma Ally - #16 - 23yrs<br>
+3. Seif Omar - #22 - 21yrs<br>
+<span class="pos">🛡️ DEFENDERS - Mabeki</span>
+4. Baraka Hamis - #5 - Captain - 28yrs<br>
+5. Issa Kondo - #3 - 24yrs<br>
+6. Kondo Rajab - #2 - 25yrs<br>
+7. Seif Abdallah - #4 - 22yrs<br>
+8. Mussa Said - #12 - 23yrs<br>
+9. Jafari Mwinyi - #15 - 27yrs<br>
+10. Hassan K. - #20 - 21yrs<br>
+<span class="pos">⚙️ MIDFIELDERS - Viungo</span>
+11. Kante Ally - #8 - 26yrs - MOTM 2<br>
+12. Ally Samir - #6 - 24yrs<br>
+13. Samir Yahya - #10 - Playmaker - 25yrs<br>
+14. Pato Ngassa - #17 - 22yrs<br>
+15. Ramadhan Said - #7 - 23yrs<br>
+16. Haruna M. - #14 - 24yrs<br>
+17. Ibrahimu M. - #18 - 21yrs<br>
+<span class="pos">⚽ FORWARDS - Washambuliaji</span>
+18. Juma K. - #9 - 27yrs - Top Scorer 4 Goals<br>
+19. Pato Juma - #11 - 24yrs - 2 Goals<br>
+20. Ramadhan Kondo - #19 - 22yrs<br>
+21. Said K. - #21 - 20yrs<br>
+22. Omary B. - #23 - 23yrs<br>
+23. Shaban I. - #25 - 19yrs<br>
+24. Nyerere J. - #13 - 26yrs<br>
+</div></div>
+<button class="btn btn-white" onclick="toggle('bench')">TECHNICAL & LEADERSHIP BENCH ▼</button>
+<div id="bench" class="table-card"><div class="squad-box">
+<span class="pos">👔 BENCHI LA UFUNDI</span>
+<b>Kocha Mkuu:</b> Coach Vincent Nyerere - Leseni CAF B - 5 Mechi<br>
+<b>Kocha Msaidizi:</b> Coach Ally Salehe - Tactics & Fitness<br>
+<b>Kocha wa Makipa:</b> Coach Juma Hamisi - Goalkeeping Coach<br>
+<b>Kocha wa Viungo:</b> Coach Seif Abdallah<br>
+<span class="pos">🏥 UONGOZI & HUDUMA</span>
+<b>Team Manager:</b> Nyerere Hamisi<br>
+<b>Assistant Manager:</b> Rajab Kondo<br>
+<b>Daktari:</b> Dr. Said M. - Physio<br>
+<b>Kit Manager:</b> Omary Juma<br>
+<b>Media Officer:</b> Vincent N. - Digital<br>
+<b>Mlinzi wa Uwanja:</b> Mzee Kondo<br>
+</div></div>
+<button class="btn" onclick="alarm()">TURN ON/OFF LIVE ALARM</button>
 <script>
-function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active');}
+function toggle(id){let e=document.getElementById(id);e.style.display=e.style.display=='none'?'block':'none';}
+function alarm(){alert('🔔 Live Alarm - Mashabiki watapata notification mechi ikianza!');}
 function load(){
- let d=JSON.parse(localStorage.getItem('trans_live')||'{"sh":0,"sa":0,"min":0,"match":"TRANSIT CAMP FC vs KMC FC","live":false,"goals":[],"motm":""}');
- document.getElementById('sh').innerText=d.sh||0; document.getElementById('sa').innerText=d.sa||0; document.getElementById('min').innerText=d.min||0; document.getElementById('matchTitle').innerText=d.match||'TRANSIT CAMP FC vs KMC FC';
- document.getElementById('liveStatus').innerHTML=d.live?'<span class=live>🔴 LIVE KMC COMPLEX</span>':'⚪ Bado Haijaanza';
- if(d.goals&&d.goals.length>0){
-  let tr=d.goals.filter(g=>g.team.includes('TRANS')); let km=d.goals.filter(g=>!g.team.includes('TRANS'));
-  document.getElementById('goalsTrans').innerHTML=tr.length?tr.map(g=>`⚽ ${g.player} ${g.min}'`).join('<br>'):'Hakuna goli';
-  document.getElementById('goalsKmc').innerHTML=km.length?km.map(g=>`⚽ ${g.player} ${g.min}'`).join('<br>'):'Hakuna goli';
- }
- if(d.motm)document.getElementById('liveMotm').innerText='🌟 MOTM: '+d.motm;
- let hist=JSON.parse(localStorage.getItem('trans_history')||'[]'); let next=JSON.parse(localStorage.getItem('trans_next')||'{}');
- let h=''; if(hist.length)h+=hist.slice().reverse().map(x=>`<div style="border-bottom:1px solid #333;padding:6px 0;"><b>${x.match}</b> ${x.score}<br><small>${(x.goals||[]).map(g=>g.player).join(', ')} | MOTM: ${x.motm}</small></div>`).join(''); else h+='Mechi ya kwanza: Leo vs KMC<br>';
- if(next.opp)h+=`<div style="margin-top:10px;background:#ffde59;color:black;padding:8px;border-radius:8px;"><b>NEXT:</b> vs ${next.opp} - ${next.date}</div>`;
- document.getElementById('historyList').innerHTML=h;
+ let d=JSON.parse(localStorage.getItem('trans_live')||'{}');
+ if(d.sh!==undefined){document.getElementById('liveScore').innerText=`Trans ${d.sh}-${d.sa} KMC | ${d.min}'`;}
+ if(d.goals&&d.goals.length>0){let box=document.getElementById('goalsBox');box.style.display='block';box.innerHTML=d.goals.map(g=>`⚽ ${g.team}: <b>${g.player}</b> ${g.min}'`).join('<br>');}
+ if(d.motm){document.getElementById('goalsBox').style.display='block';document.getElementById('goalsBox').innerHTML+='<br>🌟 MOTM: '+d.motm;}
 }
 setInterval(load,3000);load();
 </script>
