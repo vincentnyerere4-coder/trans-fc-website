@@ -1,95 +1,64 @@
-
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ADMIN - TRANS FC LIVE</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin - Transit Camp FC</title>
 <style>
-body{font-family:sans-serif;background:#111;color:white;padding:15px;max-width:400px;margin:auto}
-h2{text-align:center;color:#ffde59}
-.box{background:#222;border-radius:14px;padding:15px;margin-top:12px}
-input,button{width:100%;padding:14px;margin-top:8px;border-radius:10px;border:none;font-size:16px;font-weight:700}
-button{cursor:pointer}
-.btn-goal{background:#0a4d25;color:white}
-.btn-yellow{background:#ffde59;color:#111}
-.btn-red{background:#d00;color:white}
-.pass{border:2px solid #ffde59}
-.score{font-size:48px;text-align:center;margin:10px 0;font-weight:900}
+body{font-family:Arial;padding:12px;background:#0a2210;color:white}
+.card{background:white;color:black;padding:16px;border-radius:14px;margin-bottom:12px}
+h3{color:#0a4a25;margin-bottom:8px}
+input{width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box}
+button{width:100%;padding:12px;background:#0a4a25;color:white;border:none;border-radius:10px;font-weight:900;margin-top:8px;font-size:14px}
+.btn-yellow{background:#ffde59;color:#0a2210}
+.btn-red{background:#ff4444}
+.small{font-size:12px;color:#666;margin-bottom:6px}
 </style>
 </head>
 <body>
-<h2>TRANS FC ADMIN</h2>
-<div class="box">
-<input id="pwd" type="password" placeholder="Password: trans2026" class="pass">
-<button onclick="login()" class="btn-yellow" id="loginBtn">INGIA</button>
+<div class="card">
+<h3>⚽ LIVE SCORE</h3>
+<input id="sh" type="number" placeholder="Transit Goals">
+<input id="sa" type="number" placeholder="Opponent Goals">
+<input id="min" type="text" placeholder="Minute mf 45'">
+<input id="motm" type="text" placeholder="MOTM mf Juma K.">
+<button onclick="saveLive()">HIFADHI LIVE</button>
+<button class="btn-yellow" onclick="clearLive()">Futa Live</button>
 </div>
-
-<div id="panel" style="display:none">
-<div class="box">
-<small>Mechi:</small>
-<input id="match" value="TRANS vs KMC - Mabatini">
-<div class="score"><span id="sh">0</span> - <span id="sa">0</span></div>
-<small>Dakika:</small>
-<input id="min" type="number" value="0" min="0" max="120">
-<button onclick="changeMin(1)" class="btn-yellow">+1 DAKIKA</button>
+<div class="card">
+<h3>✅ WEKA MATOKEO YA MWISHO</h3>
+<input id="resDate" type="date" value="2026-10-17">
+<input id="resMatch" type="text" value="Transit Camp FC vs KMC FC">
+<input id="resScore" type="text" placeholder="2-0">
+<input id="resScorers" type="text" placeholder="Juma 23', Pato 78'">
+<button onclick="saveResult()">HIFADHI MATOKEO</button>
 </div>
-
-<div class="box">
-<button onclick="goal('home')" class="btn-goal">⚽ GOLI TRANS +1</button>
-<button onclick="goal('away')" style="background:#444;color:white">⚽ GOLI Mpinzani +1</button>
-<button onclick="resetGoal()" style="background:#333;color:#aaa">Rudisha 0-0</button>
+<div class="card">
+<h3>📋 MATOKEO</h3>
+<div id="list"></div>
+<button class="btn-red" onclick="clearResults()">Futa Matokeo Yote</button>
 </div>
-
-<div class="box">
-<button onclick="updateLive(true)" class="btn-yellow">🔴 WASHA LIVE (Mashabiki waone)</button>
-<button onclick="updateLive(false)" class="btn-red">⚫ ZIMA LIVE / MECHI IMEISHA</button>
-</div>
-
-<div class="box" style="background:#0a4d25">
-<p id="status" style="font-size:13px"></p>
-<p style="font-size:11px;opacity:.7;margin-top:8px">Kesho uwandani: Bonyeza WASHA LIVE mechi ikianza, ukiona goli bonyeza GOLI TRANS. Mashabiki wote wataona live!</p>
-</div>
-</div>
-
+<div class="card" style="text-align:center"><a href="index.html" style="color:#0a4a25;font-weight:900;text-decoration:none">⬅️ RUDI INDEX</a></div>
 <script>
-let data = JSON.parse(localStorage.getItem('trans_live') || '{"sh":0,"sa":0,"min":0,"match":"TRANS vs KMC - Mabatini","live":false}');
-function login(){
-  if(document.getElementById('pwd').value !== 'trans2026'){alert('Password si sahihi! Weka trans2026');return;}
-  document.getElementById('panel').style.display='block';
-  document.getElementById('loginBtn').style.display='none';
-  load();
+function saveLive(){
+ let d={sh:document.getElementById('sh').value,sa:document.getElementById('sa').value,min:document.getElementById('min').value,motm:document.getElementById('motm').value};
+ localStorage.setItem('trans_live',JSON.stringify(d));
+ alert('LIVE saved!');
 }
-function load(){
-  document.getElementById('sh').innerText=data.sh;
-  document.getElementById('sa').innerText=data.sa;
-  document.getElementById('min').value=data.min;
-  document.getElementById('match').value=data.match;
-  updateStatus();
+function clearLive(){localStorage.removeItem('trans_live');alert('LIVE cleared');}
+function saveResult(){
+ let results=JSON.parse(localStorage.getItem('trans_results')||'[]');
+ results.push({date:document.getElementById('resDate').value,match:document.getElementById('resMatch').value,score:document.getElementById('resScore').value,scorers:document.getElementById('resScorers').value});
+ localStorage.setItem('trans_results',JSON.stringify(results));
+ alert('Matokeo saved!');renderList();localStorage.removeItem('trans_live');
 }
-function save(){
-  data.min=parseInt(document.getElementById('min').value)||0;
-  data.match=document.getElementById('match').value;
-  localStorage.setItem('trans_live', JSON.stringify(data));
-  localStorage.setItem('trans_live_update', Date.now());
-  updateStatus();
+function renderList(){
+ let results=JSON.parse(localStorage.getItem('trans_results')||'[]');
+ if(results.length==0){document.getElementById('list').innerHTML="<small>Hakuna bado</small>";return;}
+ document.getElementById('list').innerHTML=results.map((r,i)=>`<div style="border-bottom:1px solid #eee;padding:8px 0;font-size:13px"><b>${r.date}</b> - ${r.match} <b style="color:#0a4a25">${r.score}</b><br><small>${r.scorers}</small><br><button onclick="delOne(${i})" style="background:red;padding:4px 10px;width:auto;margin-top:4px;font-size:11px">Futa</button></div>`).join('');
 }
-function goal(team){
-  if(team==='home') data.sh++; else data.sa++;
-  save(); load();
-  if(navigator.vibrate) navigator.vibrate([400,100,400]);
-}
-function resetGoal(){data.sh=0;data.sa=0;save();load();}
-function changeMin(n){let m=document.getElementById('min');m.value=parseInt(m.value||0)+n;save();}
-function updateLive(isLive){
-  data.live=isLive;
-  save();
-  alert(isLive ? 'LIVE IMEWASHWA! Sasa mashabiki wanaona LIVE' : 'LIVE IMEZIMWA - Mechi imeisha');
-}
-function updateStatus(){
-  document.getElementById('status').innerText=`SASA: ${data.match} | ${data.sh}-${data.sa} | ${data.min}' | Live: ${data.live ? 'NDIO 🔴' : 'HAPANA'}`;
-}
-setInterval(save, 1000);
+function delOne(i){let r=JSON.parse(localStorage.getItem('trans_results')||'[]');r.splice(i,1);localStorage.setItem('trans_results',JSON.stringify(r));renderList();}
+function clearResults(){if(confirm('Futa yote?')){localStorage.removeItem('trans_results');renderList();}}
+renderList();
 </script>
 </body>
 </html>
